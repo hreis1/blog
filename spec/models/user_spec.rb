@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'valid?' do
     it 'nome não pode ser vazio' do
-      post = build(:post, title: '')
+      user = build(:user, name: '')
 
-      expect(post).not_to be_valid
-      expect(post.errors[:title]).to include('não pode ficar em branco')
+      expect(user).not_to be_valid
+      expect(user.errors[:name]).to include('não pode ficar em branco')
     end
   end
 end
