@@ -1,4 +1,7 @@
 pt-BR:
+  sign_up: Inscrever-se
+  sign_in: Entrar
+  log_out: Sair
   activerecord:
     attributes:
       user:

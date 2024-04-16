@@ -4,7 +4,11 @@ require_relative '../config/environment'
 
 if ENV['RAILS_ENV'] == 'test'
   require 'simplecov'
-  SimpleCov.start 'rails'
+  SimpleCov.start 'rails' do
+    add_filter 'channels'
+    add_filter 'mailers'
+    add_filter 'jobs'
+  end
   puts "required simplecov"
 end
 
@@ -21,6 +25,7 @@ Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f 
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+  config.include Warden::Test::Helpers
   config.before(type: :system) do
     driven_by(:rack_test)
   end
