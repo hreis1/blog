@@ -16,17 +16,11 @@ gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[windows jruby]
 
 group :development, :test do
+  gem "capybara"
   gem "debug", platforms: %i[mri windows]
-end
-
-group :development do
-  gem "rubocop-rails-omakase", require: false
-  gem "web-console"
-end
-
-group :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "rspec-rails"
+  gem "rubocop-rails-omakase", require: false
   gem "simplecov", require: false
 end
