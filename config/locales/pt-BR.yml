@@ -1,4 +1,5 @@
 pt-BR:
+  anonymous: anônimo
   activerecord:
     errors:
       messages:

@@ -1,0 +1,12 @@
+<p><%= @post.title %></p>
+<p><%= @post.content %></p>
+
+<%= form_with model: [@post, @comment] , method: :post do |form| %>
+  <%= form.text_area :message, placeholder: (Comment.model_name.human) %>
+  <%= form.submit t 'comments.comment_btn' %>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+  <p><%= comment.user ? comment.user.name : t('anonymous') %>
+  <p><%= comment.message %></p>
+<% end %>
