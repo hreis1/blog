@@ -8,8 +8,8 @@ O blog deverá ser dotado das seguintes funcionalidades:
 - [x] Área logada onde é possível: redigir e publicar um post;
 - [x] fazer comentários identificados através do login;
 - [x] editar e apagar posts já publicados pelo próprio usuário loggado;
-- [ ] editar o seu cadastro de usuário;
-- [ ] alterar a senha do usuário loggado.
+- [x] editar o seu cadastro de usuário;
+- [x] alterar a senha do usuário loggado.
 - [ ] recuperar a senha do usuário.
 - [ ] os posts publicados devem ter paginação ao atingirem 3 publicações, onde o 4º post irá para a página 2 e daí em diante, ou seja, cada página deverá ter até 3 posts;
 

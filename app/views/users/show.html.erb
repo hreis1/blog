@@ -1,0 +1,5 @@
+<%= @user.name %>
+
+<% if @user == current_user %>
+  <%= link_to t('edit_btn'), edit_user_registration_path %>
+<% end %>

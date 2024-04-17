@@ -38,7 +38,7 @@
           1,
           null,
           1,
-          13,
+          17,
           null,
           null,
           1,
@@ -102,7 +102,17 @@
           1,
           null,
           1,
-          5,
+          13,
+          13,
+          null,
+          null
+        ]
+      },
+      "/home/reis/blog/app/controllers/users_controller.rb": {
+        "lines": [
+          1,
+          1,
+          2,
           null,
           null
         ]
@@ -144,12 +154,13 @@
           0,
           null,
           0,
+          0,
           0
         ],
         "branches": {
         }
       }
     },
-    "timestamp": 1713391249
+    "timestamp": 1713397406
   }
 }
