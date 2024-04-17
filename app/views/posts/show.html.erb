@@ -1,6 +1,7 @@
 <h1><%= @post.title %></h1>
 <% if current_user == @post.user %>
   <%= link_to t('edit_btn'), edit_post_path(@post) %>
+  <%= button_to t('delete_btn'), post_path(@post), method: :delete %>
 <% end %>
 <p><%= @post.user.name %></p>
 <p><%= @post.content %></p>

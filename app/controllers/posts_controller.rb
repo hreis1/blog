@@ -1,24 +1,14 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [ :new, :create, :edit, :update ]
-  before_action :authorize_user!, only: [ :edit, :update ]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :authorize_user!, except: [ :index, :show, :create, :new ]
+  before_action :set_post, except: [ :index, :create, :new ]
 
   def index
     @posts = Post.order(created_at: :desc)
   end
 
-  def show
-    @post = Post.find(params[:id])
-    @comment = Comment.new
-  end
-
-  def new
-    @post = Post.new
-  end
-
   def create
-    post_params = params.require(:post).permit(:title, :content)
-    post_params[:user] = current_user
-    @post = Post.build(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to @post, notice: t(".success")
     else
@@ -27,13 +17,17 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @post = Post.find(params[:id])
+  def new
+    @post = Post.new
+  end
+
+  def edit; end
+
+  def show
+    @comment = Comment.new
   end
 
   def update
-    @post = Post.find(params[:id])
-    post_params = params.require(:post).permit(:title, :content)
     if @post.update(post_params)
       redirect_to @post, notice: t(".success")
     else
@@ -42,8 +36,23 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post.deleted!
+
+    redirect_to posts_path, notice: t(".success")
+  end
+
+
   private
 
+
+  def post_params
+    params.require(:post).permit(:title, :content)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def authorize_user!
     return if current_user == Post.find(params[:id]).user

@@ -16,4 +16,7 @@ pt-BR:
     update:
       success: Publicação atualizada com sucesso!
       error: Desculpe, houve um problema ao atualizar sua publicação. Por favor, tente novamente.
+    destroy:
+      success: Publicação excluída com sucesso!
+      error: Desculpe, houve um problema ao excluir sua publicação. Por favor, tente novamente.
     post_btn: Publicar
