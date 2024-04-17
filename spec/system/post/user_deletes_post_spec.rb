@@ -13,6 +13,8 @@ describe 'Usuário deleta uma publicação' do
     expect(Post.count).to eq 1
     expect(Post.last.status).to eq 'deleted'
     expect(current_path).to eq(posts_path)
+    expect(page).not_to have_content(post.title)
+    expect(page).not_to have_content(post.content)
   end
 
   it 'e não é o autor da publicação' do
