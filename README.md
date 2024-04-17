@@ -1,17 +1,17 @@
 O blog deverá ser dotado das seguintes funcionalidades:
 
-Área deslogada onde é possível: 
-ver os posts publicados por todos os usuários ordenados do mais novo para o mais antigo; 
-os posts publicados devem ter paginação ao atingirem 3 publicações, onde o 4º post irá para a página 2 e daí em diante, ou seja, cada página deverá ter até 3 posts; 
-fazer comentários anônimos; 
-cadastrar um novo usuário; 
-fazer login com um usuário cadastrado; 
-recuperar a senha do usuário. 
-Área logada onde é possível: redigir e publicar um post;
-editar e apagar posts já publicados pelo próprio usuário loggado;
-fazer comentários identificados através do login;
-editar o seu cadastro de usuário;
-alterar a senha do usuário loggado.  
+### Área deslogada onde é possível: 
+- [x] ver os posts publicados por todos os usuários ordenados do mais novo para o mais antigo; 
+- [x] fazer comentários anônimos;
+- [x] cadastrar um novo usuário;
+- [x] fazer login com um usuário cadastrado; 
+- [x] Área logada onde é possível: redigir e publicar um post;
+- [ ] editar e apagar posts já publicados pelo próprio usuário loggado;
+- [ ] fazer comentários identificados através do login;
+- [ ] editar o seu cadastro de usuário;
+- [ ] alterar a senha do usuário loggado.  
+- [ ] recuperar a senha do usuário. 
+- [ ] os posts publicados devem ter paginação ao atingirem 3 publicações, onde o 4º post irá para a página 2 e daí em diante, ou seja, cada página deverá ter até 3 posts; 
    
 Você poderá usar quaisquer gems que desejar para acelerar o seu desenvolvimento.
 

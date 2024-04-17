@@ -18,7 +18,7 @@ describe 'Usuário comenta publicações' do
   it 'e está logado' do
     user = create(:user)
     post = create(:post)
-    
+
     login_as user
     visit root_path
     click_on post.title

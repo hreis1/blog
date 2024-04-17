@@ -7,7 +7,6 @@ pt-BR:
     attributes:
       comment:
         message: Mensagem
-
   comments:
     create:
       success: Comentário enviado com sucesso!

@@ -1,0 +1,16 @@
+pt-BR:
+  create_post: Criar Publicação
+  activerecord:
+    models:
+      post:
+        one: Publicação
+        other: Publicações
+    attributes:
+      post:
+        title: Título
+        content: Conteúdo
+  posts:
+    create:
+      success: Publicação enviada com sucesso!
+      error: Desculpe, houve um problema ao criar sua publicação. Por favor, tente novamente.
+    post_btn: Publicar

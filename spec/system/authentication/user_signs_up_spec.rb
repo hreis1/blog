@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe 'Usuário se cadastra' do
   it 'com sucesso' do
-
     visit root_path
     click_on 'Inscrever-se'
     fill_in 'Nome', with: 'Fulano de Tal'
