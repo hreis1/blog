@@ -1,4 +1,7 @@
-<p><%= @post.title %></p>
+<h1><%= @post.title %></h1>
+<% if current_user == @post.user %>
+  <%= link_to t('edit_btn'), edit_post_path(@post) %>
+<% end %>
 <p><%= @post.user.name %></p>
 <p><%= @post.content %></p>
 

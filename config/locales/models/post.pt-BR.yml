@@ -13,4 +13,7 @@ pt-BR:
     create:
       success: Publicação enviada com sucesso!
       error: Desculpe, houve um problema ao criar sua publicação. Por favor, tente novamente.
+    update:
+      success: Publicação atualizada com sucesso!
+      error: Desculpe, houve um problema ao atualizar sua publicação. Por favor, tente novamente.
     post_btn: Publicar
