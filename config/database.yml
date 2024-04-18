@@ -12,3 +12,9 @@ development:
 test:
   <<: *default
   database: blog_test
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  database: my_app_render_production
+  username: my_app_render
+  password: <%= ENV['MY_APP_RENDER_DATABASE_PASSWORD'] %>
