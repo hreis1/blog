@@ -8,7 +8,7 @@ describe 'Usuário faz login' do
     click_on 'Entrar'
     fill_in 'E-mail', with: 'fulanodetal@email.com'
     fill_in 'Senha', with: '12345678'
-    within 'form' do
+    within '.new_user' do
       click_on 'Entrar'
     end
 

@@ -1,6 +1,9 @@
-<% @posts.each do |post|  %>
-  <div>
-    <p><%= link_to post.title, post %></p>
-    <p><%= post.content %></p>
-  </div>
-<% end %>
+<section class="posts">
+  <% @posts.each do |post| %>
+    <dl>
+      <dt><h1><%= link_to post.title, post_path(post) %></h1></dt>
+      <dd><%= post.created_at.strftime("%d-%m-%y") %> | <%= post.user.name %> </dd>
+      <dd><%= post.content.truncate(234) %></dd>
+    </dl>
+  <% end %>
+</section>

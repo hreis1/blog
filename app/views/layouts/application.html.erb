@@ -18,10 +18,10 @@
           <% if user_signed_in? %>
             <%= link_to t('create_post'), new_post_path %>
             <%= link_to current_user.name.split.first, user_path(current_user) %>
-            <%= button_to t('log_out'), destroy_user_session_path, method: :delete, class: 'button' %>
+            <%= button_to t('log_out'), destroy_user_session_path, method: :delete %>
           <% else %>
             <%= link_to t('sign_in'), new_user_session_path %>
-            <%= link_to t('sign_up'), new_user_registration_path %>
+            <%= button_to t('sign_up'), new_user_registration_path, method: :get %>
           <% end %>
         </div>
       </nav>

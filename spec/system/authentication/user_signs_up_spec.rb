@@ -8,7 +8,7 @@ describe 'Usuário se cadastra' do
     fill_in 'E-mail', with: 'fulanodetal@email.com'
     fill_in 'Senha', with: '12345678'
     fill_in 'Confirme sua senha', with: '12345678'
-    within 'form' do
+    within '.new_user' do
       click_on 'Inscrever-se'
     end
 

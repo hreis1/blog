@@ -4,6 +4,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 a{
   text-decoration: none;
   color: #333;
@@ -28,24 +32,13 @@ nav{
 
 .nav-links{
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  width: 30%;
-  justify-content: space-between;
+  gap: 20px;
+  width: 50%;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="submit"]{
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  border: 1px solid #f2f2f2;
-  font-size: 16px;
-  width: 100%;
-}
-
-.button{
+button{
   background-color: #f1356d;
   color: white;
   padding: 10px 20px;
@@ -55,6 +48,19 @@ input[type="submit"]{
   font-size: 16px;
 }
 
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="submit"],
+textarea{
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #f2f2f2;
+  font-size: 16px;
+  width: 100%;
+}
+
 main{
   position: absolute;
   top: 2rem;
@@ -62,4 +68,30 @@ main{
   padding: 5rem;
   display: flex;
   justify-content: center;
+}
+
+.posts{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 700px;
+  gap: 40px;
+}
+
+dl:hover{
+  transform: scale(1.01);
+  transition: 0.3s;
+}
+
+dt {
+  font-size: 1.1rem;
+}
+
+dl,
+dd {
+  font-size: 0.9rem;
+}
+
+dd {
+  margin-bottom: 1em;
 }
