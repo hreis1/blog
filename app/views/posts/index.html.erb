@@ -1,9 +1,10 @@
 <section class="posts">
   <% @posts.each do |post| %>
-    <dl>
-      <dt><h1><%= link_to post.title, post_path(post) %></h1></dt>
-      <dd><%= post.created_at.strftime("%d-%m-%y") %> | <%= post.user.name %> </dd>
-      <dd><%= post.content.truncate(234) %></dd>
-    </dl>
+    <%= link_to post do %>
+      <h1><%= post.title.truncate(40) %></h1>
+      <p><%= post.content.truncate(212) %></p>
+    <% end %>
+    <%= l post.created_at.to_date, format: :short %>,
+    <%= post.user.name %>
   <% end %>
 </section>

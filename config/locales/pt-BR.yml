@@ -1,5 +1,5 @@
 pt-BR:
-  anonymous: anônimo
+  anonymous: Anônimo
   unauthorized: Você não tem permissão para acessar esta página.
   activerecord:
     errors:

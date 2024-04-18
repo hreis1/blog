@@ -13,7 +13,7 @@ a{
   color: #333;
 }
 
-a:hover{
+nav a:hover{
   color: #f1356d;
 }
 
@@ -28,14 +28,6 @@ nav{
   position: fixed;
   height: 5rem;
   z-index: 1;
-}
-
-.nav-links{
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 20px;
-  width: 50%;
 }
 
 button{
@@ -63,35 +55,91 @@ textarea{
 
 main{
   position: absolute;
-  top: 2rem;
+  top: 7rem;
   width: 100%;
-  padding: 5rem;
+  padding-left: 10%;
+  padding-right: 10%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+
+.nav-links{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  width: 50%;
+}
+
+.flash {
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 5px;
+  background-color: #f1356d;
+  color: white;
+  text-align: center;
 }
 
 .posts{
+  min-width: 300px;
+  max-width: 800px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;  
+  gap: 20px;
+}
+
+.posts h1{
+  width: 80%;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.posts h1:hover{
+  color: #f1356d;
+}
+
+.post h1{
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.post-header{
+  display: flex;
   justify-content: space-between;
-  width: 700px;
-  gap: 40px;
+  align-items:flex-start;
+  margin-bottom: 20px;
 }
 
-dl:hover{
-  transform: scale(1.01);
-  transition: 0.3s;
+.post-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-dt {
-  font-size: 1.1rem;
+.post-content{
+  margin-bottom: 20px;
 }
 
-dl,
-dd {
-  font-size: 0.9rem;
+.comments {
+  margin-top: 20px;
 }
 
-dd {
-  margin-bottom: 1em;
+.comment-form {
+  margin-bottom: 20px;
+}
+
+.comment {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.comment-message {
+  margin-bottom: 10px;
+}
+
+.comment-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

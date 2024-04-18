@@ -12,7 +12,7 @@ describe 'Usuário comenta publicações' do
     expect(page).to have_current_path post_path(post)
     expect(page).to have_content 'Comentário enviado com sucesso!'
     expect(page).to have_content 'que publicação legal.'
-    expect(page).to have_content 'anônimo'
+    expect(page).to have_content 'Anônimo'
   end
 
   it 'e está logado' do

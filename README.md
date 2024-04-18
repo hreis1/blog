@@ -22,3 +22,11 @@ Opcionais:
 SUPER DIFERENCIAL: 
 
 Se conseguir, crie a possibilidade de upload de arquivo TXT para criação de um ou mais posts, ou criação de múltiplas tags, utilizando Sidekiq para processamento assíncrono.
+
+- [] mostrar data dos posts
+- [] mostrar data dos comentários
+- [] mostrar data da última edição do post
+- [] visualizar perfil do usuário
+- [] visualizar perfil de outros usuários
+- [] visualizar posts de outros usuários
+- [] ajustar mensagens de noticia e erro
