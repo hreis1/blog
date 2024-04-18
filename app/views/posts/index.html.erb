@@ -1,10 +1,12 @@
 <section class="posts">
   <% @posts.each do |post| %>
-    <%= link_to post do %>
-      <h1><%= post.title.truncate(40) %></h1>
-      <p><%= post.content.truncate(212) %></p>
-    <% end %>
-    <%= l post.created_at.to_date, format: :short %>,
-    <%= post.user.name %>
+    <div class="post-preview">
+      <%= link_to post do %>
+        <h1><%= post.title.truncate(40) %></h1>
+        <p><%= post.content.truncate(212) %></p>
+      <% end %>
+        <%= l post.created_at.to_date, format: :short %>,
+        <%= post.user.name %>
+    </div>
   <% end %>
 </section>
