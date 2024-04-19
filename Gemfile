@@ -8,6 +8,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem "importmap-rails"
 gem "jbuilder"
+gem "kaminari"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
 gem "sprockets-rails"

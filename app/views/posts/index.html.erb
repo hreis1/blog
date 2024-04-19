@@ -9,4 +9,5 @@
         <%= post.user.name %>
     </div>
   <% end %>
+  <%= paginate @posts, window: 1, outer_window: 0, left: 1, right: 1 %>
 </section>

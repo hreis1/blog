@@ -1,5 +1,5 @@
 require 'faker'
 
-5.times do
+10.times do
   FactoryBot.create(:post)
 end
