@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_post, except: [ :index, :create, :new ]
 
   def index
-    @posts = Post.active.order(created_at: :desc)
+    @posts = Post.active.order(created_at: :desc).page(params[:page]).per(3)
   end
 
   def create

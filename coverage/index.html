@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-18T16:49:24-03:00">2024-04-18T16:49:24-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-18T21:30:30-03:00">2024-04-18T21:30:30-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.36
+         2.44
        </span>
     </span> hits/line
     )
@@ -99,7 +99,7 @@
             <td class="cell--number">33</td>
             <td class="cell--number">33</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">3.09</td>
+            <td class="cell--number">3.27</td>
             
           </tr>
         
@@ -188,7 +188,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.1
+         3.22
        </span>
     </span> hits/line
     )
@@ -257,7 +257,7 @@
             <td class="cell--number">33</td>
             <td class="cell--number">33</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">3.09</td>
+            <td class="cell--number">3.27</td>
             
           </tr>
         
@@ -1077,13 +1077,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="17" data-linenumber="7">
-            <span class="hits">17</span>
+          <li class="covered" data-hits="23" data-linenumber="7">
+            <span class="hits">23</span>
             
 
             
 
-            <code class="ruby">    @posts = Post.active.order(created_at: :desc)</code>
+            <code class="ruby">    @posts = Post.active.order(created_at: :desc).page(params[:page]).per(3)</code>
           </li>
         </div>
       

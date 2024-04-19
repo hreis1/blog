@@ -13,11 +13,11 @@ a{
   color: #333;
 }
 
-nav a:hover{
+.navbar a:hover{
   color: #f1356d;
 }
 
-nav{
+.navbar{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,6 +29,40 @@ nav{
   height: 5rem;
   z-index: 1;
 }
+
+.pagination{
+  position: fixed;
+  bottom: 3rem;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.current{
+  padding: 10px;
+  background-color:#333;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a{
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f1356d;
+  color: white;
+}
+
+/* .pagination a{
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f1356d;
+  color: white;
+} */
 
 button{
   background-color: #f1356d;
