@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-20T15:29:31-03:00">2024-04-20T15:29:31-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-04-20T16:34:05-03:00">2024-04-20T16:34:05-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.85
+         3.22
        </span>
     </span> hits/line
     )
@@ -95,11 +95,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#03ba05f5fde58fb381bcf3a969fdba2e5fdade8b" class="src_link" title="app/controllers/posts_controller.rb">app/controllers/posts_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">72</td>
-            <td class="cell--number">40</td>
-            <td class="cell--number">40</td>
+            <td class="cell--number">64</td>
+            <td class="cell--number">35</td>
+            <td class="cell--number">35</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">4.18</td>
+            <td class="cell--number">4.66</td>
             
           </tr>
         
@@ -150,11 +150,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#b45a710ebf4129f21b50ed7ffe291cf199e8e796" class="src_link" title="app/models/post.rb">app/models/post.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">11</td>
-            <td class="cell--number">7</td>
-            <td class="cell--number">7</td>
+            <td class="cell--number">19</td>
+            <td class="cell--number">12</td>
+            <td class="cell--number">12</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.00</td>
+            <td class="cell--number">3.58</td>
             
           </tr>
         
@@ -210,7 +210,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.0
+         4.31
        </span>
     </span> hits/line
     )
@@ -223,8 +223,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>57</b> relevant lines,
-    <span class="green"><b>57</b> lines covered</span> and
+    <b>52</b> relevant lines,
+    <span class="green"><b>52</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -275,11 +275,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#03ba05f5fde58fb381bcf3a969fdba2e5fdade8b" class="src_link" title="app/controllers/posts_controller.rb">app/controllers/posts_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">72</td>
-            <td class="cell--number">40</td>
-            <td class="cell--number">40</td>
+            <td class="cell--number">64</td>
+            <td class="cell--number">35</td>
+            <td class="cell--number">35</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">4.18</td>
+            <td class="cell--number">4.66</td>
             
           </tr>
         
@@ -363,14 +363,14 @@
     <span class="group_name">Models</span>
     (<span class="covered_percent">
       <span class="red">
-  65.52%
+  70.59%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
-       <span class="red">
-         0.66
+       <span class="green">
+         1.62
        </span>
     </span> hits/line
     )
@@ -383,11 +383,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>29</b> relevant lines,
-    <span class="green"><b>19</b> lines covered</span> and
+    <b>34</b> relevant lines,
+    <span class="green"><b>24</b> lines covered</span> and
     <span class="red"><b>10</b> lines missed. </span>
     (<span class="red">
-  65.52%
+  70.59%
 </span>
 )
   </div>
@@ -435,11 +435,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#b45a710ebf4129f21b50ed7ffe291cf199e8e796" class="src_link" title="app/models/post.rb">app/models/post.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">11</td>
-            <td class="cell--number">7</td>
-            <td class="cell--number">7</td>
+            <td class="cell--number">19</td>
+            <td class="cell--number">12</td>
+            <td class="cell--number">12</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.00</td>
+            <td class="cell--number">3.58</td>
             
           </tr>
         
@@ -1042,8 +1042,8 @@
     
 
     <div class="t-line-summary">
-      <b>40</b> relevant lines.
-      <span class="green"><b>40</b> lines covered</span> and
+      <b>35</b> relevant lines.
+      <span class="green"><b>35</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -1182,7 +1182,7 @@
 
             
 
-            <code class="ruby">    create_or_delete_post_tags(@post, post_params[:tags])</code>
+            <code class="ruby">    @post.create_or_delete_post_tags(post_params[:tags])</code>
           </li>
         </div>
       
@@ -1352,8 +1352,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="21" data-linenumber="28">
-            <span class="hits">21</span>
+          <li class="covered" data-hits="23" data-linenumber="28">
+            <span class="hits">23</span>
             
 
             
@@ -1396,19 +1396,19 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="32">
-            <span class="hits">3</span>
+          <li class="covered" data-hits="4" data-linenumber="32">
+            <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">    create_or_delete_post_tags(@post, post_params[:tags])</code>
+            <code class="ruby">    @post.create_or_delete_post_tags(post_params[:tags])</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="33">
-            <span class="hits">3</span>
+          <li class="covered" data-hits="4" data-linenumber="33">
+            <span class="hits">4</span>
             
 
             
@@ -1418,8 +1418,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="34">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="3" data-linenumber="34">
+            <span class="hits">3</span>
             
 
             
@@ -1594,29 +1594,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="50">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def create_or_delete_post_tags(post, tags)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="7" data-linenumber="51">
-            <span class="hits">7</span>
-            
-
-            
-
-            <code class="ruby">    return if tags.blank?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="52">
+          <li class="never" data-hits="" data-linenumber="50">
             
             
 
@@ -1627,46 +1605,68 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="53">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="51">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    post.post_tags.destroy_all</code>
+            <code class="ruby">  def post_params</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="54">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="16" data-linenumber="52">
+            <span class="hits">16</span>
             
 
             
 
-            <code class="ruby">    tags.split(&quot;,&quot;).each do |tag|</code>
+            <code class="ruby">    params.require(:post).permit(:title, :content, :tags)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="55">
-            <span class="hits">5</span>
+          <li class="never" data-hits="" data-linenumber="53">
+            
             
 
             
 
-            <code class="ruby">      post.tags &lt;&lt; Tag.find_or_create_by(name: tag.strip)</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="56">
+          <li class="never" data-hits="" data-linenumber="54">
             
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="55">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def set_post</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="32" data-linenumber="56">
+            <span class="hits">32</span>
+            
+
+            
+
+            <code class="ruby">    @post = Post.find(params[:id])</code>
           </li>
         </div>
       
@@ -1699,18 +1699,18 @@
 
             
 
-            <code class="ruby">  def post_params</code>
+            <code class="ruby">  def authorize_user!</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="14" data-linenumber="60">
-            <span class="hits">14</span>
+          <li class="covered" data-hits="12" data-linenumber="60">
+            <span class="hits">12</span>
             
 
             
 
-            <code class="ruby">    params.require(:post).permit(:title, :content, :tags)</code>
+            <code class="ruby">    return if current_user == Post.find(params[:id]).user</code>
           </li>
         </div>
       
@@ -1721,100 +1721,12 @@
 
             
 
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="62">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="63">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def set_post</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="28" data-linenumber="64">
-            <span class="hits">28</span>
-            
-
-            
-
-            <code class="ruby">    @post = Post.find(params[:id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="65">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="66">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="67">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def authorize_user!</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="10" data-linenumber="68">
-            <span class="hits">10</span>
-            
-
-            
-
-            <code class="ruby">    return if current_user == Post.find(params[:id]).user</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="69">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="70">
+          <li class="covered" data-hits="3" data-linenumber="62">
             <span class="hits">3</span>
             
 
@@ -1825,7 +1737,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="71">
+          <li class="never" data-hits="" data-linenumber="63">
             
             
 
@@ -1836,7 +1748,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="72">
+          <li class="never" data-hits="" data-linenumber="64">
             
             
 
@@ -2165,8 +2077,8 @@
     
 
     <div class="t-line-summary">
-      <b>7</b> relevant lines.
-      <span class="green"><b>7</b> lines covered</span> and
+      <b>12</b> relevant lines.
+      <span class="green"><b>12</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -2289,6 +2201,94 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="11">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="12">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def create_or_delete_post_tags(tags)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="11" data-linenumber="13">
+            <span class="hits">11</span>
+            
+
+            
+
+            <code class="ruby">    post_tags.destroy_all</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="11" data-linenumber="14">
+            <span class="hits">11</span>
+            
+
+            
+
+            <code class="ruby">    return if tags.blank?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="15">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    tags.split(&quot;,&quot;).each do |tag|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="9" data-linenumber="16">
+            <span class="hits">9</span>
+            
+
+            
+
+            <code class="ruby">      self.tags &lt;&lt; Tag.find_or_create_by(name: tag.strip)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="19">
             
             
 

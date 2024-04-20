@@ -4,7 +4,7 @@
 
     <div class="post-actions">
       <% if current_user == @post.user %>
-      <%= button_to t('delete_btn'), post_path(@post), method: :delete %>
+        <%= button_to t('delete_btn'), post_path(@post), method: :delete %>
         <%= button_to t('edit_btn'), edit_post_path(@post), method: :get %>
       <% end %>
       <%= button_to t('back_btn'), posts_path, method: :get %>

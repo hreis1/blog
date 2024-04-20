@@ -1,0 +1,7 @@
+<% if post.errors.any? %>
+  <% post.errors.full_messages.each do |message| %>
+    <div class="flash">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
