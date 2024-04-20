@@ -52,4 +52,22 @@ describe 'Usuário edita uma publicação' do
     expect(page).to have_content 'Título não pode ficar em branco'
     expect(page).to have_content 'Conteúdo não pode ficar em branco'
   end
+
+  it 'e edita as tags' do
+    post = create(:post, title: 'Exercícios matinais', content: 'Comece o dia com alguns alongamentos simples.')
+    post.tags << create(:tag, name: 'manhã')
+    post.tags << create(:tag, name: 'exercício')
+    post.save
+
+    login_as post.user
+    visit post_path(post)
+    click_on 'Editar'
+    fill_in 'Tags', with: 'manhã, alongamento'
+    click_on 'Editar'
+
+    expect(page).to have_current_path post_path(post)
+    expect(page).to have_content 'Publicação atualizada com sucesso!'
+    expect(page).to have_content 'manhã'
+    expect(page).to have_content 'alongamento'
+  end
 end

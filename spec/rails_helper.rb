@@ -9,7 +9,6 @@ if ENV['RAILS_ENV'] == 'test'
     add_filter 'mailers'
     add_filter 'jobs'
   end
-  puts "required simplecov"
 end
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?

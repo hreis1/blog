@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'valid?' do
+  describe '#valid?' do
     it 'nome não pode ser vazio' do
       user = build(:user, name: '')
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  describe 'valid?' do
+  describe '#valid?' do
     it 'mensagem não pode ficar em branco' do
       comment = build(:comment, message: '')
 

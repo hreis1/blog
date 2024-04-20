@@ -149,6 +149,19 @@ main{
   margin-bottom: 20px;
 }
 
+.post-tags{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tag{
+  background-color: #f1356d;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .comments {
   margin-top: 20px;
 }
