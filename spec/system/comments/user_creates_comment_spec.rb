@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Usuário comenta publicações' do
+describe 'Usuário cria comentário' do
   it 'e não está logado' do
     post = create(:post)
 
@@ -40,5 +40,6 @@ describe 'Usuário comenta publicações' do
     click_on 'Comentar'
 
     expect(page).to have_content 'Desculpe, não conseguimos enviar seu comentário. Por favor, tente novamente.'
+    expect(Comment.count).to eq 0
   end
 end

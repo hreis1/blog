@@ -17,16 +17,17 @@ Opcionais:
 
 - [x] Se conseguir, escrever testes automatizados simples;
 - [x] Se conseguir, implemente internacionalização;
-- [ ] Se conseguir, adicione tags aos seus post, assim como filtros para utilizar as tags cadastradas. As tags deverão ser implementadas como uma nova tabela no seu modelo, associada aos posts;
+- [x] Se conseguir, adicione tags aos seus post, assim como filtros para utilizar as tags cadastradas. As tags deverão ser implementadas como uma nova tabela no seu modelo, associada aos posts;
 
 SUPER DIFERENCIAL: 
 
 Se conseguir, crie a possibilidade de upload de arquivo TXT para criação de um ou mais posts, ou criação de múltiplas tags, utilizando Sidekiq para processamento assíncrono.
 
-- [] mostrar data dos posts
-- [] mostrar data dos comentários
+- [x] mostrar data dos posts
+- [x] mostrar data dos comentários
+- [x] visualizar perfil do usuário
+- [x] visualizar perfil de outros usuários
 - [] mostrar data da última edição do post
-- [] visualizar perfil do usuário
-- [] visualizar perfil de outros usuários
 - [] visualizar posts de outros usuários
-- [] ajustar mensagens de noticia e erro
+- [] adicionar foto de perfil
+
