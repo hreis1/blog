@@ -15,6 +15,12 @@
     <%= @post.content %>
   </div>
 
+  <div class="post-tags">
+    <% @post.tags.each do |tag| %>
+      <span class="tag"><%= tag.name %></span>
+    <% end %>
+  </div>
+
   <div class="post-footer">
     <%= l @post.created_at.to_date, format: :short %>,
     <%= @post.user.name %>

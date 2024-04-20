@@ -8,7 +8,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(post_params)
+    @post = current_user.posts.build(post_params.except(:tags))
+    create_or_delete_post_tags(@post, post_params[:tags])
     if @post.save
       redirect_to @post, notice: t(".success")
     else
@@ -28,7 +29,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
+    create_or_delete_post_tags(@post, post_params[:tags])
+    if @post.update(post_params.except(:tags))
       redirect_to @post, notice: t(".success")
     else
       flash.now[:notice] = t(".error")
@@ -45,9 +47,17 @@ class PostsController < ApplicationController
 
   private
 
+  def create_or_delete_post_tags(post, tags)
+    return if tags.blank?
+
+    post.post_tags.destroy_all
+    tags.split(",").each do |tag|
+      post.tags << Tag.find_or_create_by(name: tag.strip)
+    end
+  end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :tags)
   end
 
   def set_post

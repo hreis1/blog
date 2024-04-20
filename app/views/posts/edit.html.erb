@@ -17,5 +17,9 @@
     <%= f.label :content %><br />
     <%= f.text_area :content %>
   </div>
+  <div>
+    <%= f.label :tags %><br />
+    <%= f.text_field :tags, value: @post.tags.pluck(:name).join(', ') %>
+  </div>
   <%= f.submit t('edit_btn') %>
 <% end %>

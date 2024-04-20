@@ -33,4 +33,20 @@ describe 'Usuário cria uma publicação' do
     expect(page).to have_content 'Conteúdo não pode ficar em branco'
     expect(page).to have_content 'Desculpe, houve um problema ao criar sua publicação. Por favor, tente novamente.'
   end
+
+  it 'e adiciona tags à publicação' do
+    user = create(:user)
+
+    login_as user
+    visit root_path
+    click_on 'Criar Publicação'
+    fill_in 'Título', with: 'Como fazer um Blog do zero'
+    fill_in 'Conteúdo', with: 'Primeiro você cria o universo'
+    fill_in 'Tags', with: 'ruby, rails, blog'
+    click_on 'Publicar'
+
+    expect(page).to have_content 'ruby'
+    expect(page).to have_content 'rails'
+    expect(page).to have_content 'blog'
+  end
 end
