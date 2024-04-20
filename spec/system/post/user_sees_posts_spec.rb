@@ -82,7 +82,7 @@ describe 'Usuário visualiza publicações' do
     expect(page).not_to have_content(first_post.title.truncate(40))
   end
 
-  context 'e clica em uma publicação' do
+  context 'clica em uma publicação' do
     it 'e é redirecionado para a página da publicação' do
       post = create(:post)
 
@@ -116,7 +116,42 @@ describe 'Usuário visualiza publicações' do
 
       click_on post.title.truncate(40)
 
-      expect(page).to have_content(tag.name)
+      expect(page).to have_link(tag.name)
+    end
+  end
+
+  context 'clica em uma tag' do
+    it 'e vê as publicações da tag' do
+      first_post = create(:post)
+      second_post = create(:post)
+      tag = create(:tag, name: 'Ruby')
+      create(:post_tag, post: first_post, tag: tag)
+      create(:post_tag, post: second_post, tag: tag)
+
+      visit root_path
+      click_on 'Ruby', match: :first
+
+      expect(page).to have_content(first_post.title.truncate(40))
+      expect(page).to have_content(first_post.content.truncate(212))
+      expect(page).to have_content(second_post.title.truncate(40))
+      expect(page).to have_content(second_post.content.truncate(212))
+
+      expect(page).to have_button('Voltar')
+    end
+
+    it 'e não vê publicações sem a tag' do
+      first_post = create(:post)
+      second_post = create(:post)
+      tag = create(:tag, name: 'Ruby')
+      create(:post_tag, post: first_post, tag: tag)
+
+      visit root_path
+      click_on 'Ruby'
+
+      expect(page).to have_content(first_post.title.truncate(40))
+      expect(page).to have_content(first_post.content.truncate(212))
+      expect(page).not_to have_content(second_post.title.truncate(40))
+      expect(page).not_to have_content(second_post.content.truncate(212))
     end
   end
 end

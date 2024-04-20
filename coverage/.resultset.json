@@ -67,7 +67,7 @@
           1,
           null,
           1,
-          27,
+          29,
           null,
           null,
           1,
@@ -165,6 +165,16 @@
           null
         ]
       },
+      "/home/reis/blog/app/controllers/tags_controller.rb": {
+        "lines": [
+          1,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
       "/home/reis/blog/app/models/application_record.rb": {
         "lines": [
           0,
@@ -192,6 +202,6 @@
         }
       }
     },
-    "timestamp": 1713641645
+    "timestamp": 1713646878
   }
 }
