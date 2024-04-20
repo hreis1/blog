@@ -8,13 +8,13 @@ describe 'Usuário visualiza publicações' do
 
     visit root_path
 
-    expect(page).to have_content(third_post.title)
+    expect(page).to have_content(third_post.title.truncate(40))
     expect(page).to have_content(third_post.content.truncate(212))
     expect(page).to have_content(third_post.user.name)
-    expect(page).to have_content(second_post.title)
+    expect(page).to have_content(second_post.title.truncate(40))
     expect(page).to have_content(second_post.content.truncate(212))
     expect(page).to have_content(second_post.user.name)
-    expect(page).to have_content(first_post.title)
+    expect(page).to have_content(first_post.title.truncate(40))
     expect(page).to have_content(first_post.content.truncate(212))
     expect(page).to have_content(first_post.user.name)
 
@@ -51,11 +51,11 @@ describe 'Usuário visualiza publicações' do
       click_on "2"
     end
 
-    expect(page).to have_content(second_post.title)
-    expect(page).to have_content(first_post.title)
-    expect(page).not_to have_content(fifth_post.title)
-    expect(page).not_to have_content(fourth_post.title)
-    expect(page).not_to have_content(third_post.title)
+    expect(page).to have_content(second_post.title.truncate(40))
+    expect(page).to have_content(first_post.title.truncate(40))
+    expect(page).not_to have_content(fifth_post.title.truncate(40))
+    expect(page).not_to have_content(fourth_post.title.truncate(40))
+    expect(page).not_to have_content(third_post.title.truncate(40))
   end
 
   it 'e volta para a página anterior' do

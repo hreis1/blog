@@ -46,9 +46,10 @@ describe 'Usuário edita seu cadastro' do
     fill_in 'Senha atual', with: '12345678'
     click_on 'Editar'
 
-    expect(page).to have_content('Não foi possível salvar usuário')
     expect(page).to have_content('Nome não pode ficar em branco')
     expect(page).to have_content('E-mail não pode ficar em branco')
+    expect(user.reload.name).to eq 'Fulano'
+    expect(user.reload.email).to eq 'fulano@email.com'
   end
 
   it 'não altera senha do usuário com senha atual inválida' do
@@ -61,7 +62,18 @@ describe 'Usuário edita seu cadastro' do
     fill_in 'Senha atual', with: '12345679'
     click_on 'Editar'
 
-    expect(page).to have_content('Não foi possível salvar usuário')
     expect(page).to have_content('Senha atual não é válido')
+  end
+
+  it 'e esquece a senha atual' do
+    user = create(:user, name: 'Fulano', password: '12345678')
+
+    visit new_user_session_path
+    click_on 'Esqueceu sua senha?'
+
+    fill_in 'E-mail', with: user.email
+    click_on 'Enviar instruções para redefinição da senha'
+
+    expect(page).to have_content('Dentro de minutos, você receberá um e-mail com as instruções de redefinição da sua senha.')
   end
 end

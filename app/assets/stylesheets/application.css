@@ -32,7 +32,7 @@ a{
 
 .pagination{
   position: fixed;
-  bottom: 3rem;
+  bottom: 0;
   left: 0;
   width: 100%;
   background-color: #fff;
@@ -40,7 +40,7 @@ a{
   justify-content: center;
   align-items: center;
   gap: 10px;
-  padding: 10px;
+  padding: 20px;
 }
 
 .current{
@@ -56,13 +56,6 @@ a{
   background-color: #f1356d;
   color: white;
 }
-
-/* .pagination a{
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #f1356d;
-  color: white;
-} */
 
 button{
   background-color: #f1356d;
@@ -96,6 +89,7 @@ main{
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding-bottom: 100px;
 }
 
 .nav-links{
