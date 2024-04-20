@@ -162,6 +162,15 @@ main{
   border-radius: 5px;
 }
 
+.tag-posts{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
 .comments {
   margin-top: 20px;
 }
