@@ -3,6 +3,12 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
   include Devise::Test::ControllerHelpers
   describe 'POST #upload' do
+    it 'deve estar logado' do
+      post :upload
+
+      expect(response).to redirect_to(new_user_session_path)
+    end
+
     it 'envia um arquivo com posts' do
       user = create(:user)
 
