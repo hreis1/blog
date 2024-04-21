@@ -50,7 +50,7 @@ class PostsController < ApplicationController
 
     text = file.read
     if Post.upload_text_valid?(text)
-      Post.create_from_text(text, current_user)
+      CreatePostsFromTextJob.perform_async(text, current_user.id)
       redirect_to posts_path, notice: t(".success")
     else
       redirect_to new_post_path, alert: t(".invalid")

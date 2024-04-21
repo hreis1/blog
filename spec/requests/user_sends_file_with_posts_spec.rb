@@ -18,7 +18,7 @@ RSpec.describe PostsController, type: :controller do
 
       expect(response).to redirect_to(posts_path)
       expect(response.request.flash[:notice]).to eq('Arquivo enviado com sucesso! Processando...')
-      expect(Post.count).to eq(4)
+      expect { CreatePostsFromTextJob.drain }.to change(Post, :count).by(4)
     end
 
     it 'envia um arquivo que não é .txt' do

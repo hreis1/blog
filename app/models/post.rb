@@ -29,11 +29,11 @@ class Post < ApplicationRecord
     true
   end
 
-  def self.create_from_text(text, user)
+  def self.create_from_text(text, user_id)
     posts = text.split("\n\n")
     posts.each do |post|
       title, content, tags = post.split("\n")
-      new_post = Post.create(title: title, content: content, user: user)
+      new_post = Post.create(title: title, content: content, user_id: user_id)
       new_post.create_or_delete_post_tags(tags)
     end
   end

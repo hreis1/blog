@@ -78,7 +78,7 @@ RSpec.describe Post, type: :model do
       user = create(:user)
       file = File.open(Rails.root.join('spec', 'support', 'posts.txt'))
       text = file.read
-      Post.create_from_text(text, user)
+      Post.create_from_text(text, user.id)
 
       expect(Post.count).to eq(4)
     end
@@ -87,7 +87,7 @@ RSpec.describe Post, type: :model do
       user = create(:user)
       file = File.open(Rails.root.join('spec', 'support', 'posts_with_and_without_tags.txt'))
       text = file.read
-      Post.create_from_text(text, user)
+      Post.create_from_text(text, user.id)
 
       expect(Post.count).to eq(3)
       expect(Tag.count).to eq(3)
