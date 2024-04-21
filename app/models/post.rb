@@ -16,4 +16,25 @@ class Post < ApplicationRecord
       self.tags << Tag.find_or_create_by(name: tag.strip)
     end
   end
+
+  def self.upload_text_valid?(text)
+    return false if text.blank?
+
+    posts = text.split("\n\n")
+    posts.each do |post|
+      title, content, tags = post.split("\n")
+      return false if title.blank?
+      return false if content.blank?
+    end
+    true
+  end
+
+  def self.create_from_text(text, user)
+    posts = text.split("\n\n")
+    posts.each do |post|
+      title, content, tags = post.split("\n")
+      new_post = Post.create(title: title, content: content, user: user)
+      new_post.create_or_delete_post_tags(tags)
+    end
+  end
 end

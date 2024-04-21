@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário cria comentário' do
   it 'e não está logado' do
-    post = create(:post)
+    post = create(:post, title: '5 dicas para aprender Ruby on Rails')
 
     visit root_path
     click_on post.title
@@ -17,7 +17,7 @@ describe 'Usuário cria comentário' do
 
   it 'e está logado' do
     user = create(:user)
-    post = create(:post)
+    post = create(:post, title: '5 dicas para aprender Ruby on Rails')
 
     login_as user
     visit root_path
@@ -32,7 +32,7 @@ describe 'Usuário cria comentário' do
   end
 
   it 'e tenta criar comentário vazio' do
-    post = create(:post)
+    post = create(:post, title: '5 dicas para aprender Ruby on Rails')
 
     visit root_path
     click_on post.title

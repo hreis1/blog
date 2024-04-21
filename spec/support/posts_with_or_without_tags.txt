@@ -1,0 +1,10 @@
+Post de Teste
+Esse é um post de teste com uma tag
+tag1
+
+Outro Post de Teste
+Esse é outro post de teste sem tag
+
+Mais um Post de Teste
+Esse é um post de teste com tags
+tag1, tag2, tag3

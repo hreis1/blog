@@ -2,15 +2,6 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 
-if ENV['RAILS_ENV'] == 'test'
-  require 'simplecov'
-  SimpleCov.start 'rails' do
-    add_filter 'channels'
-    add_filter 'mailers'
-    add_filter 'jobs'
-  end
-end
-
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 

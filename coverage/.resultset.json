@@ -1,6 +1,26 @@
 {
   "RSpec": {
     "coverage": {
+      "/home/reis/blog/app/models/user.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/reis/blog/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
       "/home/reis/blog/app/helpers/application_helper.rb": {
         "lines": [
           1,
@@ -31,10 +51,31 @@
           1,
           null,
           1,
-          11,
-          11,
-          4,
+          12,
+          12,
+          6,
+          17,
+          null,
+          null,
+          null,
+          1,
           9,
+          null,
+          8,
+          8,
+          17,
+          17,
+          14,
+          null,
+          3,
+          null,
+          null,
+          1,
+          1,
+          1,
+          4,
+          4,
+          4,
           null,
           null,
           null
@@ -107,6 +148,18 @@
           1,
           null,
           null,
+          1,
+          4,
+          4,
+          null,
+          3,
+          3,
+          1,
+          1,
+          null,
+          2,
+          null,
+          null,
           null,
           1,
           null,
@@ -175,25 +228,22 @@
           null
         ]
       },
-      "/home/reis/blog/app/models/application_record.rb": {
+      "/home/reis/blog/app/jobs/application_job.rb": {
         "lines": [
           0,
-          0,
+          null,
+          null,
+          null,
+          null,
+          null,
           0
         ],
         "branches": {
         }
       },
-      "/home/reis/blog/app/models/user.rb": {
+      "/home/reis/blog/app/mailers/application_mailer.rb": {
         "lines": [
           0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
           0,
           0,
           0
@@ -202,6 +252,6 @@
         }
       }
     },
-    "timestamp": 1713656804
+    "timestamp": 1713720236
   }
 }

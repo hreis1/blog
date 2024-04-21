@@ -15,3 +15,15 @@
   </div>
   <%= f.submit t('posts.post_btn') %>
 <% end %>
+
+<%= form_with url: posts_upload_path do |f| %>
+  <%= f.file_field :file, accept: '.txt', class: 'upload-file' %>
+  <%= f.label :file, t('upload_file') %>
+  <%= f.submit t('upload_btn'), hidden: true, class: 'upload-submit' %>
+<% end %>
+
+<script>
+  document.querySelector('.upload-file').addEventListener('change', function() {
+    document.querySelector('.upload-submit').click();
+  });
+</script>
