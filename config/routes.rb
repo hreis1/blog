@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     resources "comments", only: [ :create ]
   end
 
+  post "posts/upload", to: "posts#upload"
+
   resources "tags", only: [ :show ]
 end

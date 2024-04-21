@@ -19,4 +19,9 @@ pt-BR:
     destroy:
       success: Publicação excluída com sucesso!
       error: Desculpe, houve um problema ao excluir sua publicação. Por favor, tente novamente.
+    upload:
+      success: Arquivo enviado com sucesso! Processando...
+      error: Desculpe, houve um problema ao enviar seu arquivo. Por favor, tente novamente.
+      invalid: Desculpe, o arquivo enviado não é válido. Por favor, tente novamente.
+      empty: Desculpe, o arquivo enviado está vazio. Por favor, tente novamente.
     post_btn: Publicar

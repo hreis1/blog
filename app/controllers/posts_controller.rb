@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :authorize_user!, except: [ :index, :show, :create, :new ]
-  before_action :set_post, except: [ :index, :create, :new ]
+  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy, :upload ]
+  before_action :authorize_user!, only: [ :edit, :update, :destroy ]
+  before_action :set_post, only: [ :edit, :update, :destroy, :show ]
 
   def index
     @posts = Post.active.order(created_at: :desc).page(params[:page]).per(3).includes(:tags)
@@ -44,6 +44,18 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: t(".success")
   end
 
+  def upload
+    file = params[:file]
+    return redirect_to posts_path, alert: t(".empty") if file.blank?
+
+    text = file.read
+    if Post.upload_text_valid?(text)
+      Post.create_from_text(text, current_user)
+      redirect_to posts_path, notice: t(".success")
+    else
+      redirect_to new_post_path, alert: t(".invalid")
+    end
+  end
 
   private
 
