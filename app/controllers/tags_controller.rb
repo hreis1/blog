@@ -5,15 +5,14 @@ class TagsController < ApplicationController
   end
 
   def search
-    @query = params[:query]
-    return redirect_to request.referrer, alert: t(".empty_search") if @query.blank?
+    return redirect_to request.referrer, alert: t(".empty_search") if params[:tag].blank?
 
-    @tag = Tag.find_by(name: @query)
+    @tag = Tag.find_by(name: params[:tag])
     if @tag
       @posts = @tag.posts.active.order(created_at: :desc).page(params[:page]).per(3)
       render :show
     else
-      redirect_to root_path, alert: t(".not_found", tag: @query)
+      redirect_to root_path, alert: t(".not_found", tag: params[:tag])
     end
   end
 end
