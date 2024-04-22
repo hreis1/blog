@@ -4,8 +4,8 @@ describe 'Usuário busca por Tag' do
   it 'e encontra posts com a tag' do
     user = create(:user)
     tag = create(:tag, name: 'ruby')
-    post = create(:post, title: 'Post com tag', user: user, tags: [ tag ])
-    post_without_tag = create(:post, title: 'Post sem tag', user: user)
+    create(:post, title: 'Post com tag', user:, tags: [tag])
+    create(:post, title: 'Post sem tag', user:)
 
     login_as user
     visit root_path
@@ -42,7 +42,7 @@ describe 'Usuário busca por Tag' do
   it 'e pesquisa por tag com post apagado' do
     user = create(:user)
     tag = create(:tag, name: 'ruby')
-    post = create(:post, title: 'Post com tag', user: user, tags: [ tag ])
+    post = create(:post, title: 'Post com tag', user:, tags: [tag])
     post.deleted!
 
     login_as user

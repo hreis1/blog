@@ -13,8 +13,8 @@ RSpec.describe PostsController, type: :controller do
       user = create(:user)
 
       sign_in user
-      file = fixture_file_upload(Rails.root.join('spec', 'support', 'posts.txt'), 'text/plain')
-      post :upload, params: { file: file }
+      file = fixture_file_upload(Rails.root.join('spec/support/posts.txt'), 'text/plain')
+      post :upload, params: { file: }
 
       expect(response).to redirect_to(posts_path)
       expect(response.request.flash[:notice]).to eq('Arquivo enviado com sucesso! Processando...')
@@ -25,8 +25,8 @@ RSpec.describe PostsController, type: :controller do
       user = create(:user)
 
       sign_in user
-      file = fixture_file_upload(Rails.root.join('spec', 'support', 'posts.csv'), 'text/csv')
-      post :upload, params: { file: file }
+      file = fixture_file_upload(Rails.root.join('spec/support/posts.csv'), 'text/csv')
+      post :upload, params: { file: }
 
       expect(response).to redirect_to(new_post_path)
       expect(response.request.flash[:alert]).to eq('Desculpe, o arquivo enviado não é válido. Por favor, tente novamente.')
@@ -40,7 +40,7 @@ RSpec.describe PostsController, type: :controller do
       post :upload
 
       expect(response).to redirect_to(posts_path)
-      expect(response.request.flash[:alert]).to eq(I18n.t("posts.upload.empty"))
+      expect(response.request.flash[:alert]).to eq(I18n.t('posts.upload.empty'))
       expect(Post.count).to eq(0)
     end
 
@@ -48,11 +48,11 @@ RSpec.describe PostsController, type: :controller do
       user = create(:user)
 
       sign_in user
-      file = fixture_file_upload(Rails.root.join('spec', 'support', 'posts_blank_title.txt'), 'text/plain')
-      post :upload, params: { file: file }
+      file = fixture_file_upload(Rails.root.join('spec/support/posts_blank_title.txt'), 'text/plain')
+      post :upload, params: { file: }
 
       expect(response).to redirect_to(new_post_path)
-      expect(response.request.flash[:alert]).to eq(I18n.t("posts.upload.invalid"))
+      expect(response.request.flash[:alert]).to eq(I18n.t('posts.upload.invalid'))
       expect(Post.count).to eq(0)
     end
   end

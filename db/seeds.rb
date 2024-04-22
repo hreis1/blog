@@ -52,7 +52,8 @@ end
 comments = [
   { message: 'Ótimo artigo! Obrigado por compartilhar sua experiência.', post: Post.first, user: User.all.sample },
   { message: 'Estou ansioso para experimentar o Devise em meu próximo projeto.', post: Post.second },
-  { message: 'Realmente interessante! Você poderia compartilhar mais detalhes sobre o projeto de AR?', post: Post.third, user: User.all.sample },
+  { message: 'Realmente interessante! Você poderia compartilhar mais detalhes sobre o projeto de AR?',
+    post: Post.third, user: User.all.sample },
   { message: 'Docker é incrível! Eu uso em todos os meus projetos agora.', post: Post.fourth },
   { message: 'Excelente post! Obrigado por compartilhar.', post: Post.first, user: User.all.sample }
 ]

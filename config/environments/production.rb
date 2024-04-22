@@ -1,19 +1,20 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address:         "smtp.gmail.com",
-  port:            587,
-  domain:          "localhost",
-  user_name:       Rails.application.credentials.gmail[:email],
-  password:        Rails.application.credentials.gmail[:password],
-  authentication:  "plain",
-  enable_starttls: true,
-  open_timeout:    5,
-  read_timeout:    5 }
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'localhost',
+    user_name: Rails.application.credentials.gmail[:email],
+    password: Rails.application.credentials.gmail[:password],
+    authentication: 'plain',
+    enable_starttls: true,
+    open_timeout: 5,
+    read_timeout: 5
+  }
 
-  config.action_mailer.default_url_options = { host: "https://blog-qtnm.onrender.com" }
+  config.action_mailer.default_url_options = { host: 'https://blog-qtnm.onrender.com' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -35,7 +36,7 @@ Rails.application.configure do
 
   # Disable serving static files from `public/`, relying on NGINX/Apache to do so instead.
   # config.public_file_server.enabled = false
-  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present? || ENV["RENDER"].present?
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RENDER'].present?
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
@@ -71,12 +72,12 @@ Rails.application.configure do
                                        .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # "info" includes generic and useful information about system operation, but avoids logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII). If you
   # want to log everything, set the level to "debug".
-  config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
+  config.log_level = ENV.fetch('RAILS_LOG_LEVEL', 'info')
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store

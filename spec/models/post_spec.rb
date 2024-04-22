@@ -36,7 +36,7 @@ RSpec.describe Post, type: :model do
 
   describe '.upload_text_valid?' do
     it 'valida o texto do arquivo' do
-      file = File.open(Rails.root.join('spec', 'support', 'posts.txt'))
+      file = File.open(Rails.root.join('spec/support/posts.txt'))
       text = file.read
 
       expect(Post.upload_text_valid?(text)).to be true
@@ -49,8 +49,8 @@ RSpec.describe Post, type: :model do
     end
 
     it 'falso se título ou conteúdo estiverem em branco' do
-      file_blank_title = File.open(Rails.root.join('spec', 'support', 'posts_blank_title.txt'))
-      file_blank_content = File.open(Rails.root.join('spec', 'support', 'posts_blank_content.txt'))
+      file_blank_title = File.open(Rails.root.join('spec/support/posts_blank_title.txt'))
+      file_blank_content = File.open(Rails.root.join('spec/support/posts_blank_content.txt'))
       text_blank_title = file_blank_title.read
       text_blank_content = file_blank_content.read
 
@@ -59,14 +59,14 @@ RSpec.describe Post, type: :model do
     end
 
     it 'tags são opcionais' do
-      file = File.open(Rails.root.join('spec', 'support', 'posts_with_and_without_tags.txt'))
+      file = File.open(Rails.root.join('spec/support/posts_with_and_without_tags.txt'))
       text = file.read
 
       expect(Post.upload_text_valid?(text)).to be true
     end
 
     it 'primeiro post sem tag e segundo post com título em branco' do
-      file = File.open(Rails.root.join('spec', 'support', 'posts_first_without_tag_second_blank_title.txt'))
+      file = File.open(Rails.root.join('spec/support/posts_first_without_tag_second_blank_title.txt'))
       text = file.read
 
       expect(Post.upload_text_valid?(text)).to be false
@@ -76,7 +76,7 @@ RSpec.describe Post, type: :model do
   describe '.create_from_text' do
     it 'cria posts a partir do texto' do
       user = create(:user)
-      file = File.open(Rails.root.join('spec', 'support', 'posts.txt'))
+      file = File.open(Rails.root.join('spec/support/posts.txt'))
       text = file.read
       Post.create_from_text(text, user.id)
 
@@ -85,7 +85,7 @@ RSpec.describe Post, type: :model do
 
     it 'cria posts a partir do texto com tags' do
       user = create(:user)
-      file = File.open(Rails.root.join('spec', 'support', 'posts_with_and_without_tags.txt'))
+      file = File.open(Rails.root.join('spec/support/posts_with_and_without_tags.txt'))
       text = file.read
       Post.create_from_text(text, user.id)
 

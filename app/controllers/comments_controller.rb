@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
     comment_params[:user] = current_user
     comment = post.comments.build(comment_params)
     if comment.save
-      redirect_to post, notice: t(".success")
+      redirect_to post, notice: t('.success')
     else
-      redirect_to post, alert: t(".error")
+      redirect_to post, alert: t('.error')
     end
   end
 end

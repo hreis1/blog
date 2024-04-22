@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
 
   has_many :comments, dependent: :destroy
-  has_many :post_tags
+  has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
   validates :title, :content, presence: true
@@ -12,7 +12,8 @@ class Post < ApplicationRecord
   def create_or_delete_post_tags(tags)
     post_tags.destroy_all
     return if tags.blank?
-    tags.split(",").each do |tag|
+
+    tags.split(',').each do |tag|
       self.tags << Tag.find_or_create_by(name: tag.strip)
     end
   end
@@ -22,7 +23,7 @@ class Post < ApplicationRecord
 
     posts = text.split("\n\n")
     posts.each do |post|
-      title, content, tags = post.split("\n")
+      title, content, = post.split("\n")
       return false if title.blank?
       return false if content.blank?
     end
@@ -33,7 +34,7 @@ class Post < ApplicationRecord
     posts = text.split("\n\n")
     posts.each do |post|
       title, content, tags = post.split("\n")
-      new_post = Post.create(title: title, content: content, user_id: user_id)
+      new_post = Post.create(title:, content:, user_id:)
       new_post.create_or_delete_post_tags(tags)
     end
   end
