@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
 
     I18n.locale = params[:locale]
     session[:locale] = I18n.locale
+
+    redirect_to request.referrer || root_path
   end
 
   def configure_permitted_parameters
