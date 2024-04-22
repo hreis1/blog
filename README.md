@@ -105,7 +105,7 @@ bin/rails db:seed
 ```
 
 ## Deploy
-A aplicação está hospedada no Render e pode ser acessada em [www.pauloh.tech](https://www.pauloh.tech).
+A aplicação está hospedada no Render e pode ser acessada em [www.pauloh.tech](https://www.pauloh.tech). O deploy não foi feito no fly.io por não ter planos gratuitos disponíveis e os meus créditos já terem sido utilizados. O render possui plano gratuito mas a aplição pode demorar 50s para responder a primeira requisição, pois o servidor é desativado por inatividade.
 
 ## Melhorias futuras
 - Foto de perfil.
@@ -121,19 +121,6 @@ A aplicação está hospedada no Render e pode ser acessada em [www.pauloh.tech]
 
 ## Testes:
 A aplicação foi desenvolvida utilizando TDD, onde os testes são escritos antes da implementação do código. Isso garante que a aplicação está funcionando corretamente e que novas funcionalidades não quebram as existentes. Também foi utilizado o RSpec para testes de integração e unitários. Além disso, foi utilizado o SimpleCov para gerar um relatório de cobertura de testes. Com isso, é possível visualizar a porcentagem de código coberto pelos testes. Foi utilizado o FactoryBot para criação de objetos de teste e o Faker para gerar dados aleatórios. Os testes utilizam a metodologia AAA (Arrange, Act, Assert) para organizar os testes. Eles são organizados em contextos, onde cada contexto representa um cenário de teste autocontido para garantir a legibilidade e manutenibilidade dos testes.
-
-## Internacionalização:
-A aplicação foi internacionalizada para que o usuário possa escolher o idioma da aplicação. Para isso, foi utilizado o I18n para traduzir as mensagens da aplicação. A mudança de idioma é feita através de um clique na bandeira do idioma no navbar da aplicação. Todos os textos da aplicação foram traduzidos para português e inglês. A funcionalidade tem o seguinte fluxo:
-  - O usuário acessa a aplicação e a página é carregada no idioma padrão (português).
-  - O usuário clica na bandeira do idioma desejado.
-  - A aplicação salva o idioma escolhido na sessão do usuário.
-  - A aplicação recarrega a página no idioma escolhido e define o idioma como padrão para as próximas visitas.
-
-## Tags:
-Foi implementada a funcionalidade de adicionar tags aos posts. As tags são adicionadas ou atribuídas na criação do post e são exibidas na página de visualização do post. O usuário pode clicar em uma tag e será redirecionado para uma página com todos os posts que possuem aquela tag. A funcionalidade tem o seguinte fluxo:
-  - O usuário cria um post e adiciona tags a ele.
-  - O post é salvo no banco de dados com as tags.
-  - O usuário clica em uma tag e é redirecionado para uma página com todos os posts que possuem aquela tag.  
 
 ## Upload de arquivo TXT:
 Foi implementada a funcionalidade de upload de arquivo TXT para criação de um ou mais posts. O arquivo deve seguir o formato:
@@ -153,3 +140,6 @@ Foi implementada a funcionalidade de upload de arquivo TXT para criação de um 
   - É feita a validação do arquivo e o usuário é notificado caso o arquivo não esteja no formato correto.
   - É criado um job no Sidekiq para processar a criação dos posts em segundo plano.
   - O usuário é recebido com uma mensagem de sucesso informando que os posts estão sendo criados.
+
+## Desenvolvimento da aplicação:
+Foi utilizado duas branches para desenvolver a aplicação: `main` e `prod`. Também foi utilizado o padrão de commits convencionais para facilitar a leitura do histórico de commits. A aplicação foi desenvolvida utilizando o Rails Way para seguir as convenções do framework. Foi utilizado o Rubocop para manter a consistência do código. As views foram estilizadas usando css puro para desenvolver habilidades de front-end. A aplicação foi desenvolvida com o objetivo de ser simples e funcional, sem muitas complexidades.
