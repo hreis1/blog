@@ -140,6 +140,7 @@ Foi implementada a funcionalidade de upload de arquivo TXT para criação de um 
   - É feita a validação do arquivo e o usuário é notificado caso o arquivo não esteja no formato correto.
   - É criado um job no Sidekiq para processar a criação dos posts em segundo plano.
   - O usuário é recebido com uma mensagem de sucesso informando que os posts estão sendo criados.
+Para testar a funcionalidade é possível utilizar o arquivo `spec/support/posts.txt` que contém 4 posts de exemplo. Caso queira testar a funcionalidade, basta enviar o arquivo na página de criação de posts. Se quiser um arquivo com mais posts, use o arquivo `spec/support/posts_large.txt` que contém 260 posts de exemplo.
 
 ## Desenvolvimento da aplicação:
 Foi utilizado duas branches para desenvolver a aplicação: `main` e `prod`. Também foi utilizado o padrão de commits convencionais para facilitar a leitura do histórico de commits. A aplicação foi desenvolvida utilizando o Rails Way para seguir as convenções do framework. Foi utilizado o Rubocop para manter a consistência do código. As views foram estilizadas usando css puro para desenvolver habilidades de front-end e com isso ela pode ser acessada pelo celular que se adapta ao tamanho da tela. A aplicação foi desenvolvida com o objetivo de ser simples e funcional, sem muitas complexidades.
