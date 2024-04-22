@@ -1,16 +1,20 @@
 <section class="posts">
   <% @posts.each do |post| %>
-    <%= link_to post do %>
-      <h1><%= post.title.truncate(40) %></h1>
-      <p><%= post.content.truncate(212) %></p>
-    <% end %>
-    <div class="tags">
-      <% post.tags.each do |tag| %>
-        <%= link_to tag.name, tag_path(tag), class: "tag" %>
+    <div class="post">
+      <%= link_to post_path(post) do %>
+        <h1><%= post.title.truncate(40) %></h1>
       <% end %>
+      <%= link_to post_path(post) do %>
+        <p><%= post.content.truncate(212) %></p>
+      <% end %>
+      <div class="tags">
+        <% post.tags.each do |tag| %>
+          <%= link_to tag.name, tag_path(tag), class: "tag" %>
+        <% end %>
+      </div>
+      <%= l post.created_at.to_date, format: :short %>,
+      <%= post.user.name %>
     </div>
-    <%= l post.created_at.to_date, format: :short %>,
-    <%= post.user.name %>
   <% end %>
   <%= paginate @posts, window: 1, outer_window: 0, left: 1, right: 1 %>
 </section>

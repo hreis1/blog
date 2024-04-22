@@ -13,50 +13,6 @@ a{
   color: #333;
 }
 
-.navbar a:hover{
-  color: #f1356d;
-}
-
-.navbar{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 10%;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  position: fixed;
-  height: 5rem;
-  z-index: 1;
-}
-
-.pagination{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding: 20px;
-}
-
-.current{
-  padding: 10px;
-  background-color:#333;
-  color: white;
-  border-radius: 5px;
-}
-
-.pagination a{
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #f1356d;
-  color: white;
-}
-
 button{
   background-color: #f1356d;
   color: white;
@@ -93,12 +49,56 @@ main{
   padding-bottom: 100px;
 }
 
-.nav-links{
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: fixed;
+  height: 5rem;
+  z-index: 1;
+}
+
+.navbar a:hover{
+  color: #f1356d;
+}
+
+.navbar-links{
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
   width: 50%;
+}
+
+.pagination{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.current{
+  padding: 10px;
+  background-color:#333;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a{
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f1356d;
+  color: white;
 }
 
 .flash {
@@ -114,23 +114,22 @@ main{
   min-width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  word-break: break-word;
-}
-
-.posts h1{
-  font-size: 2rem;
-  margin-bottom: 10px;
+  gap: 40px;
 }
 
 .posts h1:hover{
   color: #f1356d;
 }
 
+.post{
+  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .post h1{
   font-size: 2rem;
-  margin-bottom: 10px;
-  word-break: break-word;
 }
 
 .post-footer{
@@ -146,14 +145,10 @@ main{
   gap: 10px;
 }
 
-.post-content{
-  word-break: break-word;
-  margin-bottom: 20px;
-}
-
-.post-tags{
-  margin-bottom: 20px;
-  word-break: break-word;
+.tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .tag{
@@ -163,11 +158,9 @@ main{
   border-radius: 5px;
 }
 
-.tag-posts{
+.tag-title{
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 10px;
   margin-bottom: 2rem;
   color: #333;
 }
@@ -175,21 +168,18 @@ main{
 .comments {
   word-wrap: break-word;
   margin-top: 20px;
-}
-
-.comment-form {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .comment {
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   padding: 10px;
-}
-
-.comment-message {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 input[type="file"] + label {

@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar">
     <h1><%= link_to 'Blog', root_path %></h1>
-    <div class="nav-links">
+    <div class="navbar-links">
       <% if I18n.locale == :en %>        
         <%= link_to request.params.merge( locale: 'pt-BR', only_path: true ) do %>
           <img width="30" height="30" src="https://img.icons8.com/fluency/48/usa-circular.png" alt="usa-circular"/>

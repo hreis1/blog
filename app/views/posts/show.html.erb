@@ -1,15 +1,10 @@
 <section class="post">
-  <div class="post-header">
-    <h1><%= @post.title %></h1>
-  </div>
+  <h1><%= @post.title %></h1>
+  <p><%= @post.content %></p>
 
-  <div class="post-content">
-    <%= @post.content %>
-  </div>
-
-  <div class="post-tags">
+  <div class="tags">
     <% @post.tags.each do |tag| %>
-      <span><%= link_to tag.name, tag_path(tag), class: "tag" %></span>
+      <%= link_to tag.name, tag_path(tag), class: "tag" %>
     <% end %>
   </div>
 
@@ -34,17 +29,10 @@
     <% end %>
   </div>
 
-  <div class="comments-list">
-    <% @post.comments.each do |comment| %>
-      <div class="comment">
-        <div class="comment-message">
-          <%= comment.message %>
-        </div>
-        <div class="comment-footer">
-          <%= comment.user ? comment.user.name : t('anonymous') %>, 
-          <%= l comment.created_at.to_date %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <% @post.comments.each do |comment| %>
+    <div class="comment">
+      <p><%= comment.message %></p>
+      <p><%= comment.user ? comment.user.name : t('anonymous') %>, <%= l comment.created_at.to_date %></p>
+    </div>
+  <% end %>
 </section>
