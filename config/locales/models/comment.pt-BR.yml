@@ -12,3 +12,4 @@ pt-BR:
       success: Comentário enviado com sucesso!
       error: Desculpe, não conseguimos enviar seu comentário. Por favor, tente novamente.
     comment_btn: Comentar
+    comment_placeholder: "Escreva seu comentário..."

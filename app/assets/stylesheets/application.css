@@ -112,7 +112,6 @@ main{
 
 .posts{
   min-width: 300px;
-  max-width: 800px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -134,10 +133,11 @@ main{
   word-break: break-word;
 }
 
-.post-header{
+.post-footer{
   display: flex;
   justify-content: space-between;
-  align-items:flex-start;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .post-actions{
@@ -173,6 +173,7 @@ main{
 }
 
 .comments {
+  word-wrap: break-word;
   margin-top: 20px;
 }
 
@@ -181,12 +182,14 @@ main{
 }
 
 .comment {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
   padding: 10px;
 }
 
 .comment-message {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 input[type="file"] + label {

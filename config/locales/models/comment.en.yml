@@ -12,3 +12,4 @@ en:
       success: Comment sent successfully!
       error: Sorry, we couldn't send your comment. Please try again.
     comment_btn: Comment
+    comment_placeholder: "Write your comment..."

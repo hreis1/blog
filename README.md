@@ -23,11 +23,8 @@ SUPER DIFERENCIAL:
 
 Se conseguir, crie a possibilidade de upload de arquivo TXT para criação de um ou mais posts, ou criação de múltiplas tags, utilizando Sidekiq para processamento assíncrono.
 
-- [x] mostrar data dos posts
-- [x] mostrar data dos comentários
-- [x] visualizar perfil do usuário
-- [x] visualizar perfil de outros usuários
-- [] mostrar data da última edição do post
 - [] visualizar posts de outros usuários
 - [] adicionar foto de perfil
-
+- [] filtro de posts por tags
+- [] apagar comentários
+- [] tags mais utilizadas

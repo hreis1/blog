@@ -6,7 +6,7 @@ describe 'Usuário cria comentário' do
 
     visit root_path
     click_on post.title
-    fill_in 'Comentário', with: 'que publicação legal.'
+    fill_in 'Escreva seu comentário...', with: 'que publicação legal.'
     click_on 'Comentar'
 
     expect(page).to have_current_path post_path(post)
@@ -22,7 +22,7 @@ describe 'Usuário cria comentário' do
     login_as user
     visit root_path
     click_on post.title
-    fill_in 'Comentário', with: 'que publicação legal.'
+    fill_in 'Escreva seu comentário...', with: 'que publicação legal.'
     click_on 'Comentar'
 
     expect(page).to have_current_path post_path(post)
@@ -36,7 +36,7 @@ describe 'Usuário cria comentário' do
 
     visit root_path
     click_on post.title
-    fill_in 'Comentário', with: ''
+    fill_in 'Escreva seu comentário...', with: ''
     click_on 'Comentar'
 
     expect(page).to have_content 'Desculpe, não conseguimos enviar seu comentário. Por favor, tente novamente.'
