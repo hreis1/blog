@@ -197,25 +197,29 @@ input[type="file"] {
   display: none;
 }
 
-.search-term {
-  width: 100%;
-  border-right: none;
-  padding: 5px;
-  height: 36px;
-  border-radius: 5px 0 0 5px;
+.search{
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.search form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search input[type="text"]{
+  border-radius: 5px 0px 0px 5px;
 }
 
 .search-button {
-  height: 36px;
-  border-radius: 0 5px 5px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 40px;
+  border-radius: 0px 5px 5px 0px;
+  padding: 0px 10px;
 }
 
-.search{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+.search-button img{
+  width: 30px;
+  height: 30px;
 }
