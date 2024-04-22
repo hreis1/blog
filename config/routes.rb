@@ -1,4 +1,4 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   devise_for :users
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources "tags", only: [ :show ]
 
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-    username == 'admin' && password == 'admin'
+    username == "admin" && password == "admin"
   end
-  mount Sidekiq::Web => '/sidekiq'
+  mount Sidekiq::Web => "/sidekiq"
 end
