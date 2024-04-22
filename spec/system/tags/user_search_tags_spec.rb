@@ -10,7 +10,7 @@ describe 'Usuário busca por Tag' do
     login_as user
     visit root_path
     fill_in 'Pesquisar...', with: 'ruby'
-    find('.search-button').click
+    find('.search-button img').click
 
     expect(page).to have_content('Post com tag')
     expect(page).not_to have_content('Post sem tag')
@@ -22,7 +22,7 @@ describe 'Usuário busca por Tag' do
     login_as user
     visit root_path
     fill_in 'Pesquisar...', with: 'ruby'
-    find('.search-button').click
+    find('.search-button img').click
 
     expect(page).to have_current_path(root_path)
     expect(page).to have_content('Nenhuma tag encontrada com o nome ruby')
