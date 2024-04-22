@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      comment:
+        one: Comment
+        other: Comments
+    attributes:
+      comment:
+        message: Message
+  comments:
+    create:
+      success: Comment sent successfully!
+      error: Sorry, we couldn't send your comment. Please try again.
+    comment_btn: Comment

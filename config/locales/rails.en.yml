@@ -29,3 +29,5 @@
 
 en:
   hello: "Hello world"
+  anonymous: "Anonymous"
+  unauthorized: "You are not authorized to access this page."

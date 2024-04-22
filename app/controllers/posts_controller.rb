@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy, :upload ]
+  before_action :authenticate_user!, except: [ :index, :show ]
   before_action :authorize_user!, only: [ :edit, :update, :destroy ]
   before_action :set_post, only: [ :edit, :update, :destroy, :show ]
 
@@ -47,6 +47,7 @@ class PostsController < ApplicationController
   def upload
     file = params[:file]
     return redirect_to posts_path, alert: t(".empty") if file.blank?
+    return redirect_to new_post_path, alert: t(".invalid") unless file.content_type == "text/plain"
 
     text = file.read
     if Post.upload_text_valid?(text)

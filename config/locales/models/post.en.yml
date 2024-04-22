@@ -1,0 +1,27 @@
+en:
+  create_post: Create Post
+  activerecord:
+    models:
+      post:
+        one: Post
+        other: Posts
+    attributes:
+      post:
+        title: Title
+        content: Content
+  posts:
+    create:
+      success: Post created successfully!
+      error: Sorry, there was a problem creating your post. Please try again.
+    update:
+      success: Post updated successfully!
+      error: Sorry, there was a problem updating your post. Please try again.
+    destroy:
+      success: Post deleted successfully!
+      error: Sorry, there was a problem deleting your post. Please try again.
+    upload:
+      success: File uploaded successfully! Processing...
+      error: Sorry, there was a problem uploading your file. Please try again.
+      invalid: Sorry, the uploaded file is invalid. Please try again.
+      empty: Sorry, the uploaded file is empty. Please try again.
+    post_btn: Post
