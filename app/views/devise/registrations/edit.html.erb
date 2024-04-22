@@ -12,12 +12,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :password %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <i>(<%= t('minimum_password_length', count: @minimum_password_length) %>)</i>
     <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: t('.password_placeholder') %>
   </div>
 
   <div class="field">

@@ -2,6 +2,7 @@ pt-BR:
   sign_up: Inscrever-se
   sign_in: Entrar
   log_out: Sair
+  minimum_password_length: "%{count} caracteres no mínimo"
   activerecord:
     attributes:
       user:
@@ -97,6 +98,7 @@ pt-BR:
     registrations:
       destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
       edit:
+        password_placeholder: Deixe em branco caso não queira alterá-la
         are_you_sure: Você tem certeza?
         cancel_my_account: Cancelar minha conta
         currently_waiting_confirmation_for_email: 'No momento esperando por: %{email}'

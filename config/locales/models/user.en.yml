@@ -7,3 +7,5 @@ en:
     attributes:
       user:
         name: Name
+        email: Email
+        password: Password

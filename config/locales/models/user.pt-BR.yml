@@ -7,3 +7,5 @@ pt-BR:
     attributes:
       user:
         name: Nome
+        email: E-mail
+        password: Senha
