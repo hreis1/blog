@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Usuário deleta uma publicação' do
   it 'com sucesso' do
     user = create(:user)
-    post = create(:post, user: user)
+    post = create(:post, user:)
 
     login_as user
     visit post_path(post)

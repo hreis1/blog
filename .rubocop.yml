@@ -1,5 +1,33 @@
-inherit_gem:
-  rubocop-rails-omakase: rubocop.yml
+require:
+  - rubocop-rails
 
-Bundler/OrderedGems:
+AllCops:
+  NewCops: disable
+  TargetRubyVersion: 3.3.0
+  SuggestExtensions: false
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'coverage/**/*'
+    - 'db/**/*'
+    - 'public/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
   Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/AbcSize:
+  Enabled: false

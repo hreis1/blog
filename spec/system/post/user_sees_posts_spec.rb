@@ -48,7 +48,7 @@ describe 'Usuário visualiza publicações' do
     visit root_path
 
     within '.pagination' do
-      click_on "2"
+      click_on '2'
     end
 
     expect(page).to have_content(second_post.title)
@@ -68,11 +68,11 @@ describe 'Usuário visualiza publicações' do
     visit root_path
 
     within '.pagination' do
-      click_on "2"
+      click_on '2'
     end
 
     within '.pagination' do
-      click_on "1"
+      click_on '1'
     end
 
     expect(page).to have_content(fifth_post.title)
@@ -97,7 +97,7 @@ describe 'Usuário visualiza publicações' do
 
     it 'e vê os comentários da publicação' do
       post = create(:post, title: '5 dicas para aprender Ruby on Rails')
-      comment = create(:comment, post: post)
+      comment = create(:comment, post:)
 
       visit root_path
 
@@ -110,7 +110,7 @@ describe 'Usuário visualiza publicações' do
     it 'e vê as tags da publicação' do
       post = create(:post)
       tag = create(:tag)
-      create(:post_tag, post: post, tag: tag)
+      create(:post_tag, post:, tag:)
 
       visit root_path
 
@@ -125,8 +125,8 @@ describe 'Usuário visualiza publicações' do
       first_post = create(:post, title: 'Primeira publicação', content: 'Conteúdo da primeira publicação')
       second_post = create(:post, title: 'Segunda publicação', content: 'Conteúdo da segunda publicação')
       tag = create(:tag, name: 'Ruby')
-      create(:post_tag, post: first_post, tag: tag)
-      create(:post_tag, post: second_post, tag: tag)
+      create(:post_tag, post: first_post, tag:)
+      create(:post_tag, post: second_post, tag:)
 
       visit root_path
       click_on 'Ruby', match: :first
@@ -143,7 +143,7 @@ describe 'Usuário visualiza publicações' do
       first_post = create(:post)
       second_post = create(:post)
       tag = create(:tag, name: 'Ruby')
-      create(:post_tag, post: first_post, tag: tag)
+      create(:post_tag, post: first_post, tag:)
 
       visit root_path
       click_on 'Ruby'
