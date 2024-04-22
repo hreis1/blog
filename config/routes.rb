@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   post "posts/upload", to: "posts#upload"
 
-  resources "tags", only: [ :show ]
+  resources "tags", only: [ :show ] do
+    get "search", on: :collection
+  end
 
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
     username == "admin" && password == "admin"
