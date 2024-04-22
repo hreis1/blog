@@ -196,3 +196,26 @@ input[type="file"] + label {
 input[type="file"] {
   display: none;
 }
+
+.search-term {
+  width: 100%;
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-button {
+  height: 36px;
+  border-radius: 0 5px 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    models:
+      tag:
+        one: Tag
+        other: Tags
+    attributes:
+      tag:
+        name: Name
+  tags:
+    not_found: "No tag found with the name %{tag}"
+    empty_search: "Type a tag name to search"
