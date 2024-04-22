@@ -1,8 +1,8 @@
 <section class="search">
-  <%= form_with url: search_tags_path, method: :get, class: "search" do |form| %>
+  <%= form_with url: search_tags_path, method: :get do |form| %>
     <%= form.text_field :tag, placeholder: t("search_placeholder"), class: "search-term" %>
     <button type="submit" class="search-button">
-      <img width="30" height="30" src="https://img.icons8.com/ios/50/FFFFFF/search--v1.png" alt="search--v1"/>
+      <img src="https://img.icons8.com/ios/50/FFFFFF/search--v1.png" alt="search--v1"/>
     </button>
   <% end %>
 </section>
