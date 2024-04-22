@@ -40,9 +40,9 @@ Logo após, execute o comando para criar o banco de dados e rodar as migrações
 ```bash
 bin/setup
 ```
-Com a execução desse comando as tabelas do banco de dados serão criadas. Em seguida, execute o comando para iniciar o servidor:
+Com a execução desse comando as tabelas do banco de dados serão criadas. Em seguida, execute o comando para iniciar o servidor e o Sidekiq:
 ```bash
-bin/rails s
+bundle exec sidekiq & rails s
 ```
 Acesse a aplicação em `http://localhost:3000`.
 
