@@ -20,6 +20,7 @@ Uma app web para publicação de posts feita com Ruby on Rails, PostgreSQL, Redi
 - Git
 - Docker
 - Ruby 3.3.0
+- libpq-dev (para instalar o pg gem)
 
 ### Clone o repositório e entre na pasta
 ```bash
