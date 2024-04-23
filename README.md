@@ -23,7 +23,7 @@ Uma app web para publicação de posts feita com Ruby on Rails, PostgreSQL, Redi
 
 ### Clone o repositório e entre na pasta
 ```bash
-git clone
+git clone https://github.com/hreis1/blog.git
 cd blog
 ```
 
