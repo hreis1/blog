@@ -36,6 +36,7 @@ docker compose up -d
 Com isso, será criado:
   - Um container com o PostgreSQL rodando na porta 5432.
   - Um container com o Redis
+
 Defina as variáveis de ambiente para o envio de email. Utilize o arquivo `config/credentials.yml.enc` para armazenar as credenciais.
 Adicione as credenciais no arquivo `config/credentials.yml.enc`:
 ```yaml
