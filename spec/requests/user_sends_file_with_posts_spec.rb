@@ -39,7 +39,7 @@ RSpec.describe PostsController, type: :controller do
       sign_in user
       post :upload
 
-      expect(response).to redirect_to(posts_path)
+      expect(response).to redirect_to(new_post_path)
       expect(response.request.flash[:alert]).to eq(I18n.t('posts.upload.empty'))
       expect(Post.count).to eq(0)
     end

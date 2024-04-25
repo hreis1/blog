@@ -34,4 +34,15 @@ describe 'Usuário deleta uma publicação' do
 
     expect(page).not_to have_link('Excluir')
   end
+
+  it 'e não acessam publicação deletada' do
+    user = create(:user)
+    post = create(:post, user:, status: :deleted)
+
+    login_as user
+    visit post_path(post)
+
+    expect(page).to have_content('Desculpe, a publicação que você procura não existe')
+    expect(current_path).to eq(posts_path)
+  end
 end

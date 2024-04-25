@@ -25,6 +25,8 @@ class PostsController < ApplicationController
   def edit; end
 
   def show
+    return redirect_to posts_path, alert: t('.not_found') if @post.deleted?
+
     @comment = Comment.new
   end
 
@@ -46,7 +48,7 @@ class PostsController < ApplicationController
 
   def upload
     file = params[:file]
-    return redirect_to posts_path, alert: t('.empty') if file.blank?
+    return redirect_to new_post_path, alert: t('.empty') if file.blank?
     return redirect_to new_post_path, alert: t('.invalid') unless file.content_type == 'text/plain'
 
     text = file.read

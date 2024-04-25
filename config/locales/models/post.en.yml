@@ -24,4 +24,6 @@ en:
       error: Sorry, there was a problem uploading your file. Please try again.
       invalid: Sorry, the uploaded file is invalid. Please try again.
       empty: Sorry, the uploaded file is empty. Please try again.
+    show:
+      not_found: Sorry, the post you are looking for does not exist.
     post_btn: Post
