@@ -47,7 +47,7 @@ describe 'Usuário edita uma publicação' do
 
   it 'e tenta editar post apagado' do
     user = create(:user)
-    post = create(:post, user: user, title: 'Exercícios matinais', status: :deleted)
+    post = create(:post, user:, title: 'Exercícios matinais', status: :deleted)
 
     login_as user
     patch post_path(post), params: { post: { title: 'Dicas de organização' } }
@@ -59,7 +59,7 @@ describe 'Usuário edita uma publicação' do
 
   it 'e tenta acessar formulário de edição de post apagado' do
     user = create(:user)
-    post = create(:post, user: user, status: :deleted)
+    post = create(:post, user:, status: :deleted)
 
     login_as user
     get edit_post_path(post)
