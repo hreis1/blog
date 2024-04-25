@@ -12,7 +12,7 @@ describe 'Usuário deleta uma publicação' do
     expect(page).to have_content('Publicação excluída com sucesso!')
     expect(Post.count).to eq 1
     expect(Post.last.status).to eq 'deleted'
-    expect(current_path).to eq(posts_path)
+    expect(current_path).to eq(root_path)
     expect(page).not_to have_content(post.title)
     expect(page).not_to have_content(post.content)
   end
@@ -43,6 +43,6 @@ describe 'Usuário deleta uma publicação' do
     visit post_path(post)
 
     expect(page).to have_content('Desculpe, a publicação que você procura não existe')
-    expect(current_path).to eq(posts_path)
+    expect(current_path).to eq(root_path)
   end
 end

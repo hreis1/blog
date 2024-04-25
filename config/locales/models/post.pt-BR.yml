@@ -16,6 +16,7 @@ pt-BR:
     update:
       success: Publicação atualizada com sucesso!
       error: Desculpe, houve um problema ao atualizar sua publicação. Por favor, tente novamente.
+      not_found: Desculpe, a publicação que você procura não existe.
     destroy:
       success: Publicação excluída com sucesso!
       error: Desculpe, houve um problema ao excluir sua publicação. Por favor, tente novamente.
@@ -25,5 +26,7 @@ pt-BR:
       invalid: Desculpe, o arquivo enviado não é válido. Por favor, tente novamente.
       empty: Desculpe, o arquivo enviado está vazio. Por favor, tente novamente.
     show:
+      not_found: Desculpe, a publicação que você procura não existe.
+    edit:
       not_found: Desculpe, a publicação que você procura não existe.
     post_btn: Publicar

@@ -22,11 +22,9 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def edit; end
+  def edit;  end
 
   def show
-    return redirect_to posts_path, alert: t('.not_found') if @post.deleted?
-
     @comment = Comment.new
   end
 
@@ -43,7 +41,7 @@ class PostsController < ApplicationController
   def destroy
     @post.deleted!
 
-    redirect_to posts_path, notice: t('.success')
+    redirect_to root_path, notice: t('.success')
   end
 
   def upload
@@ -54,7 +52,7 @@ class PostsController < ApplicationController
     text = file.read
     if Post.upload_text_valid?(text)
       CreatePostsFromTextJob.perform_async(text, current_user.id)
-      redirect_to posts_path, notice: t('.success')
+      redirect_to root_path, notice: t('.success')
     else
       redirect_to new_post_path, alert: t('.invalid')
     end
@@ -68,6 +66,10 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+
+    return if @post&.active?
+
+    redirect_to root_path, alert: t('.not_found')
   end
 
   def authorize_user!

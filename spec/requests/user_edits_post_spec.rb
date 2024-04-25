@@ -44,4 +44,27 @@ describe 'Usuário edita uma publicação' do
     expect(response).to redirect_to(new_user_session_path)
     expect(flash[:alert]).to eq 'Para continuar, faça login ou registre-se.'
   end
+
+  it 'e tenta editar post apagado' do
+    user = create(:user)
+    post = create(:post, user: user, title: 'Exercícios matinais', status: :deleted)
+
+    login_as user
+    patch post_path(post), params: { post: { title: 'Dicas de organização' } }
+
+    expect(response).to redirect_to(root_path)
+    expect(flash[:alert]).to eq 'Desculpe, a publicação que você procura não existe.'
+    expect(post.reload.title).to eq 'Exercícios matinais'
+  end
+
+  it 'e tenta acessar formulário de edição de post apagado' do
+    user = create(:user)
+    post = create(:post, user: user, status: :deleted)
+
+    login_as user
+    get edit_post_path(post)
+
+    expect(response).to redirect_to(root_path)
+    expect(flash[:alert]).to eq 'Desculpe, a publicação que você procura não existe.'
+  end
 end
