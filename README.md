@@ -37,8 +37,6 @@ Com isso, será criado:
   - Um container com o PostgreSQL rodando na porta 5432.
   - Um container com o Redis
 
-Defina as variáveis de ambiente para o envio de email.
-
 Comente as linhas 9 e 10 dos arquivos `config/environments/development.rb`, `config/environments/production.rb`:
 ```ruby
 #user_name: Rails.application.credentials.gmail[:email],
@@ -57,7 +55,7 @@ gmail:
 ```
 O password é a senha gerada pelo Gmail para aplicativos menos seguros. Para gerar a senha, acesse [https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords) e crie uma senha para o app.
 
-Logo após, execute o comando para criar o banco de dados e rodar as migrações:
+Logo após, descomente as linhas e execute o comando para criar o banco de dados e rodar as migrações:
 ```bash
 bin/setup
 ```
