@@ -16,6 +16,7 @@ en:
     update:
       success: Post updated successfully!
       error: Sorry, there was a problem updating your post. Please try again.
+      not_found: Sorry, the post you are looking for does not exist.
     destroy:
       success: Post deleted successfully!
       error: Sorry, there was a problem deleting your post. Please try again.
@@ -24,4 +25,8 @@ en:
       error: Sorry, there was a problem uploading your file. Please try again.
       invalid: Sorry, the uploaded file is invalid. Please try again.
       empty: Sorry, the uploaded file is empty. Please try again.
+    show:
+      not_found: Sorry, the post you are looking for does not exist.
+    edit:
+      not_found: Sorry, the post you are looking for does not exist.
     post_btn: Post

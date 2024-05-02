@@ -16,7 +16,7 @@ RSpec.describe PostsController, type: :controller do
       file = fixture_file_upload(Rails.root.join('spec/support/posts.txt'), 'text/plain')
       post :upload, params: { file: }
 
-      expect(response).to redirect_to(posts_path)
+      expect(response).to redirect_to(root_path)
       expect(response.request.flash[:notice]).to eq('Arquivo enviado com sucesso! Processando...')
       expect { CreatePostsFromTextJob.drain }.to change(Post, :count).by(4)
     end
@@ -39,7 +39,7 @@ RSpec.describe PostsController, type: :controller do
       sign_in user
       post :upload
 
-      expect(response).to redirect_to(posts_path)
+      expect(response).to redirect_to(new_post_path)
       expect(response.request.flash[:alert]).to eq(I18n.t('posts.upload.empty'))
       expect(Post.count).to eq(0)
     end
