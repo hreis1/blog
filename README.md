@@ -37,8 +37,16 @@ Com isso, será criado:
   - Um container com o PostgreSQL rodando na porta 5432.
   - Um container com o Redis
 
-Defina as variáveis de ambiente para o envio de email. Utilize o comando abaixo para abrir o arquivo de credenciais:
+Defina as variáveis de ambiente para o envio de email.
+
+Comente as linhas 9 e 10 dos arquivos `config/environments/development.rb`, `config/environments/production.rb`:
+```ruby
+#user_name: Rails.application.credentials.gmail[:email],
+#password: Rails.application.credentials.gmail[:password]
+```
+Apague o arquivo `config/credentials.yml.enc` e crie um novo arquivo de credenciais:
 ```bash
+rm config/credentials.yml.enc
 EDITOR="code --wait" bin/rails credentials:edit
 ```
 Adicione as credenciais do Gmail no arquivo
