@@ -37,13 +37,18 @@ Com isso, será criado:
   - Um container com o PostgreSQL rodando na porta 5432.
   - Um container com o Redis
 
-Defina as variáveis de ambiente para o envio de email. Utilize o arquivo `config/credentials.yml.enc` para armazenar as credenciais.
-Adicione as credenciais no arquivo `config/credentials.yml.enc`:
+Defina as variáveis de ambiente para o envio de email. Utilize o comando abaixo para abrir o arquivo de credenciais:
+```bash
+EDITOR="code --wait" bin/rails credentials:edit
+```
+Adicione as credenciais do Gmail no arquivo
 ```yaml
 gmail:
-  email: 'email@email.com'
-  password: 'password'
+  email: 'email@gmail.com'
+  password: 'senha'
 ```
+O password é a senha gerada pelo Gmail para aplicativos menos seguros. Para gerar a senha, acesse [https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords) e crie uma senha para o app.
+
 Logo após, execute o comando para criar o banco de dados e rodar as migrações:
 ```bash
 bin/setup
@@ -82,13 +87,13 @@ A aplicação web é uma aplicação Rails que fornece as seguintes funcionalida
 - Tags. É possível adicionar tags aos posts e filtrar os posts por tags.
 - Upload de arquivo TXT para criação de um ou mais posts. O arquivo deve seguir o formato:
   ```
-  title: Título do post
-  content: Conteúdo do post
-  tags: tag1, tag2, tag3
-  ---
-  title: Título do post 2
-  content: Conteúdo do post 2
-  tags: tag1, tag2
+  Título do post
+  Conteúdo do post
+  tag1, tag2, tag3
+  
+  Título do post 2
+  Conteúdo do post 2
+  tag1, tag2
   ```
   O arquivo deve ser enviado na página de criação de posts.
 
@@ -133,13 +138,13 @@ A aplicação foi desenvolvida utilizando TDD, onde os testes são escritos ante
 ## Upload de arquivo TXT:
 Foi implementada a funcionalidade de upload de arquivo TXT para criação de um ou mais posts. O arquivo deve seguir o formato:
   ```
-  title: Título do post
-  content: Conteúdo do post
-  tags: tag1, tag2, tag3
-  ---
-  title: Título do post 2
-  content: Conteúdo do post 2
-  tags: tag1, tag2
+  Título do post
+  Conteúdo do post
+  tag1, tag2, tag3
+  
+  Título do post 2
+  Conteúdo do post 2
+  tag1, tag2
   ```
   O arquivo deve ser enviado na página de criação de posts. A funcionalidade tem o seguinte fluxo:
   - O usuário acessa a página de criação de posts.
