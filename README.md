@@ -109,7 +109,7 @@ O banco de dados utilizado é o PostgreSQL.
 ### Diagrama de Entidade-Relacionamento
 As tabelas do banco de dados foram modeladas de acordo com o diagrama de entidade-relacionamento a seguir:
 
-![Diagrama de Entidade-Relacionamento](./assets/der_blog.png)
+![Diagrama de Entidade-Relacionamento](./assets/der.png)
 
 ### Popular o banco de dados
 Com o servidor criado, execute o script para popular o banco de dados com dados de teste:
