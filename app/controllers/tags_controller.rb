@@ -7,7 +7,7 @@ class TagsController < ApplicationController
   def search
     return redirect_to root_path, alert: t('.empty_search') if params[:tag].blank?
 
-    @tag = Tag.find_by(name: params[:tag])
+    @tag = Tag.find_by(name: params[:tag].downcase)
     if @tag
       @posts = @tag.posts.active.order(created_at: :desc).page(params[:page]).per(3)
       return render :show if @posts.present?

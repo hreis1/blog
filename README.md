@@ -45,7 +45,7 @@ Comente as linhas 9 e 10 dos arquivos `config/environments/development.rb`, `con
 Apague o arquivo `config/credentials.yml.enc` e crie um novo arquivo de credenciais:
 ```bash
 rm config/credentials.yml.enc
-EDITOR="code --wait" bin/rails credentials:edit
+
 ```
 Adicione as credenciais do Gmail no arquivo
 ```yaml

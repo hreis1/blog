@@ -52,4 +52,18 @@ describe 'Usuário busca por Tag' do
 
     expect(page).to have_content('Nenhuma tag encontrada com o nome ruby')
   end
+
+  it 'e pesquisa com letras maiúsculas' do
+    user = create(:user)
+    tag = create(:tag, name: 'ruby')
+    create(:post, title: 'Post com tag', user:, tags: [tag])
+
+    login_as user
+    visit root_path
+    fill_in 'Pesquisar...', with: 'Ruby'
+    find('.search-button').click
+
+    expect(page).to have_content('#ruby')
+    expect(page).to have_content('Post com tag')
+  end
 end

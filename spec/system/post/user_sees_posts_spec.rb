@@ -129,7 +129,7 @@ describe 'Usuário visualiza publicações' do
       create(:post_tag, post: second_post, tag:)
 
       visit root_path
-      click_on 'Ruby', match: :first
+      click_on 'ruby', match: :first
 
       expect(page).to have_content(first_post.title)
       expect(page).to have_content(first_post.content)
@@ -146,7 +146,7 @@ describe 'Usuário visualiza publicações' do
       create(:post_tag, post: first_post, tag:)
 
       visit root_path
-      click_on 'Ruby'
+      click_on 'ruby'
 
       expect(page).to have_content(first_post.title.truncate(40))
       expect(page).to have_content(first_post.content.truncate(212))
