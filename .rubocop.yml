@@ -25,7 +25,7 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
-Metrics/LineLength:
+Layout/LineLength:
   Exclude:
     - 'spec/**/*'
 

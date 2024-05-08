@@ -4,4 +4,8 @@ class Tag < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  before_validation do
+    self.name = name.downcase if name.present?
+  end
 end
