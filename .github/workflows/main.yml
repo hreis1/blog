@@ -1,0 +1,262 @@
+name: Gemini Triage (Coluna TRIAGEM)
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # a cada 10 minutos
+  workflow_dispatch:
+
+# ============================================================
+# CONFIGURAÇÃO — ajuste antes de usar
+# ============================================================
+env:
+  PROJECT_OWNER:        # org ou usuário dono do Project
+  PROJECT_NUMBER: 1            # número do Project (URL: /projects/N)
+  PROJECT_KIND: organization   # "organization" ou "user"
+  STATUS_FIELD: Status         # nome do campo single-select que define colunas
+  STATUS_VALUE: TRIAGEM        # nome EXATO da coluna que dispara o triage
+  TRIAGED_LABEL: triaged       # label aplicada após triagem
+  GEMINI_MODEL: gemini-2.5-pro # ou "gemini-3.1-pro-preview" pra modelo mais novo
+
+concurrency:
+  group: gemini-triage-projeto
+  cancel-in-progress: false
+
+jobs:
+  # ----------------------------------------------------------
+  # 1) Encontra issues na coluna TRIAGEM ainda não processadas
+  # ----------------------------------------------------------
+  find:
+    runs-on: ubuntu-latest
+    outputs:
+      issues: ${{ steps.query.outputs.issues }}
+      count: ${{ steps.query.outputs.count }}
+    steps:
+      - name: Buscar issues na coluna ${{ env.STATUS_VALUE }}
+        id: query
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          QUERY='
+            query($owner: String!, $number: Int!) {
+              '"${{ env.PROJECT_KIND }}"'(login: $owner) {
+                projectV2(number: $number) {
+                  items(first: 100) {
+                    nodes {
+                      content {
+                        __typename
+                        ... on Issue {
+                          number
+                          state
+                          repository { nameWithOwner }
+                          labels(first: 30) { nodes { name } }
+                        }
+                      }
+                      fieldValues(first: 20) {
+                        nodes {
+                          __typename
+                          ... on ProjectV2ItemFieldSingleSelectValue {
+                            name
+                            field { ... on ProjectV2SingleSelectField { name } }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }'
+
+          gh api graphql \
+            -f query="$QUERY" \
+            -F owner="${{ env.PROJECT_OWNER }}" \
+            -F number=${{ env.PROJECT_NUMBER }} \
+            > project.json
+
+          ISSUES=$(jq -r \
+            --arg status "${{ env.STATUS_VALUE }}" \
+            --arg label  "${{ env.TRIAGED_LABEL }}" \
+            --arg field  "${{ env.STATUS_FIELD }}" '
+              .data["'"${{ env.PROJECT_KIND }}"'"].projectV2.items.nodes[]
+              | select(.content.__typename == "Issue")
+              | select(.content.state == "OPEN")
+              | select(
+                  [ .fieldValues.nodes[]
+                    | select(.__typename == "ProjectV2ItemFieldSingleSelectValue")
+                    | select(.field.name == $field)
+                    | .name
+                  ] | index($status)
+                )
+              | select(
+                  ([ .content.labels.nodes[].name ] | index($label)) | not
+                )
+              | "\(.content.repository.nameWithOwner)#\(.content.number)"
+            ' project.json | paste -sd "," -)
+
+          COUNT=$(echo "$ISSUES" | awk -F, '{print NF*(length($0)>0)}')
+
+          echo "Encontradas $COUNT issue(s) pra triagem: $ISSUES"
+          echo "issues=$ISSUES" >> "$GITHUB_OUTPUT"
+          echo "count=$COUNT"  >> "$GITHUB_OUTPUT"
+
+  # ----------------------------------------------------------
+  # 2) Roda o Gemini sobre a lista de issues
+  # ----------------------------------------------------------
+  triage:
+    needs: find
+    if: needs.find.outputs.count != '0' && needs.find.outputs.issues != ''
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+      id-token: write       # necessário pra Vertex AI/WIF (se usar)
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # pra git log/blame funcionarem
+
+      - name: Triagem com Gemini
+        uses: google-github-actions/run-gemini-cli@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+          ISSUES_LIST: ${{ needs.find.outputs.issues }}
+          TRIAGED_LABEL: ${{ env.TRIAGED_LABEL }}
+        with:
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          # Pra usar Vertex AI em vez da API key, comente a linha acima e descomente:
+          # use_vertex_ai: true
+          # gcp_project_id: ${{ vars.GOOGLE_CLOUD_PROJECT }}
+          # gcp_location: ${{ vars.GOOGLE_CLOUD_LOCATION }}
+          # gcp_workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          # gcp_service_account: ${{ vars.SERVICE_ACCOUNT_EMAIL }}
+          settings: |
+            {
+              "model": "${{ env.GEMINI_MODEL }}",
+              "maxSessionTurns": 50,
+              "coreTools": [
+                "run_shell_command(gh issue view)",
+                "run_shell_command(gh issue edit)",
+                "run_shell_command(gh issue comment)",
+                "run_shell_command(gh label list)",
+                "run_shell_command(gh search code)",
+                "run_shell_command(git log)",
+                "run_shell_command(git show)",
+                "run_shell_command(git blame)",
+                "read_file",
+                "glob",
+                "search_file_content"
+              ]
+            }
+          prompt: |
+            Você é o agente de triagem do board. Processe as issues abaixo
+            (formato `owner/repo#numero`, separadas por vírgula). A lista
+            está na variável de ambiente `ISSUES_LIST`:
+
+            $ISSUES_LIST
+
+            ## Para CADA issue da lista, faça nesta ordem:
+
+            ### 1. Entender a issue
+            Rode: `gh issue view <num> --repo <owner/repo> --json title,body,author,labels,createdAt`
+
+            Identifique se é bug, feature, dúvida, doc ou chore.
+
+            ### 2. Levantar labels existentes
+            Rode: `gh label list --repo <owner/repo> --limit 100`
+
+            REGRA RÍGIDA: aplique APENAS labels que aparecem nessa lista.
+            NUNCA invente label. Se nenhum se encaixa em algum eixo, omita.
+
+            ### 3. Investigar o código (somente bugs / problemas técnicos)
+            Para bugs ou erros, faça investigação focada no repositório
+            atual (onde o workflow está rodando). Pula essa etapa pra
+            feature/pergunta/doc/chore.
+
+            Orçamento: máximo ~10 ações de leitura/busca.
+
+            a. Extraia 2–4 termos-chave da descrição: funções, arquivos,
+               mensagens de erro, endpoints, identificadores do stack trace.
+
+            b. Use `search_file_content` pra buscar esses termos no código.
+
+            c. Use `glob` pra mapear estrutura relevante
+               (ex: `**/auth/*.ts`, `src/**/payment*.py`).
+
+            d. Use `read_file` pra ler 1–3 arquivos prováveis.
+
+            e. Se o problema parece recente, use:
+               `git log --since="30 days ago" --oneline -- <pasta>`
+               e investigue commits suspeitos com `git show <sha>`.
+
+            f. Forme UMA hipótese: arquivo:linha + 1–2 frases de raciocínio.
+
+            Pare quando tiver hipótese razoável OU atingir o limite. Não
+            tente confirmar 100% — o objetivo é apontar pra equipe humana.
+
+            ### 4. Aplicar labels (só os existentes)
+            - **Tipo** (obrigatório, 1): bug / feature / question / docs /
+              chore / refactor (ou equivalente que exista no repo)
+            - **Prioridade**: "high" só pra crashes/segurança/perda de
+              dados/bloqueio de produção
+            - **Sinalizadores** (opcional): needs-reproduction, needs-info,
+              "good first issue", etc — só se existirem
+
+            Comando: `gh issue edit <num> --repo <owner/repo> --add-label "tipo,prio"`
+
+            ### 5. Postar UM comentário consolidado
+
+            **Para bugs (com investigação):**
+            ```
+            ## 🔍 Triagem automática
+
+            **Classificação:** <tipo>, prioridade <baixa/média/alta>
+
+            **Investigação preliminar:**
+            Olhei o código e o problema provavelmente está em
+            `caminho/arquivo.ext` (linhas ~X–Y), onde <1–2 frases sobre
+            o que acontece ali>.
+
+            <Se relevante:> O commit `<sha curto>` ("<mensagem>") tocou
+            essa área recentemente e pode ter introduzido o comportamento.
+
+            **Hipótese:** <causa provável em 1–2 frases>
+
+            **Próximo passo sugerido:** <ação concreta para um humano>
+
+            <Se precisar:> @<autor> pode confirmar <pergunta específica>?
+
+            ---
+            *Triagem feita por Gemini. Pode estar errada — confirme antes de agir.*
+            ```
+
+            **Para não-bugs:**
+            ```
+            ## 🔍 Triagem automática
+
+            **Classificação:** <tipo>
+
+            <Comentário curto: encaminhamento, contexto ou perguntas — 2–4 frases.>
+
+            ---
+            *Triagem feita por Gemini.*
+            ```
+
+            Use: `gh issue comment <num> --repo <owner/repo> --body-file <arquivo>`
+            (escreva o comentário num arquivo temporário antes pra evitar
+            problemas de escape de aspas)
+
+            ### 6. Marcar como processada (OBRIGATÓRIO)
+            `gh issue edit <num> --repo <owner/repo> --add-label "$TRIAGED_LABEL"`
+
+            Sem isso a issue volta na próxima rodada do cron (10 min) e
+            você vai comentar de novo, gastando tokens. NÃO ESQUEÇA.
+
+            ## Regras rígidas
+            - NUNCA feche, atribua ou edite o corpo da issue.
+            - NUNCA mexa no Project (não mude status, não remova do board).
+            - NUNCA edite ou commite arquivos. Apenas leitura.
+            - NUNCA invente labels — se não tem o adequado, omita.
+            - A investigação é HIPÓTESE. Use linguagem hesitante
+              ("provavelmente", "pode ser", "sugiro investigar").
+            - Continue processando o resto da lista mesmo se uma issue falhar.
