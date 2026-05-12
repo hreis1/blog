@@ -11,11 +11,13 @@ on:
 env:
   PROJECT_OWNER: hreis1        # org ou usuário dono do Project
   PROJECT_NUMBER: 1            # número do Project (URL: /projects/N)
-  PROJECT_KIND: user   # "organization" ou "user"
+  PROJECT_KIND: user           # "organization" ou "user"
   STATUS_FIELD: Status         # nome do campo single-select que define colunas
   STATUS_VALUE: TRIAGEM        # nome EXATO da coluna que dispara o triage
   TRIAGED_LABEL: triaged       # label aplicada após triagem
-  GEMINI_MODEL: gemini-2.5-pro # ou "gemini-3.1-pro-preview" pra modelo mais novo
+  # Modelo Gemini é definido pelo default do CLI (gemini-2.5-pro).
+  # Pra trocar: defina a env GEMINI_MODEL no step de triagem,
+  # ou use o input gemini_cli_version pra fixar uma versão específica do CLI.
 
 concurrency:
   group: gemini-triage-projeto
@@ -122,6 +124,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN }}
           ISSUES_LIST: ${{ needs.find.outputs.issues }}
           TRIAGED_LABEL: ${{ env.TRIAGED_LABEL }}
+          GEMINI_CLI_TRUST_WORKSPACE: "true"
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
           # Pra usar Vertex AI em vez da API key, comente a linha acima e descomente:
@@ -132,7 +135,6 @@ jobs:
           # gcp_service_account: ${{ vars.SERVICE_ACCOUNT_EMAIL }}
           settings: |
             {
-              "model": "${{ env.GEMINI_MODEL }}",
               "maxSessionTurns": 50,
               "coreTools": [
                 "run_shell_command(gh issue view)",
