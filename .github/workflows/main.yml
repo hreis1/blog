@@ -9,7 +9,7 @@ on:
 # CONFIGURAÇÃO — ajuste antes de usar
 # ============================================================
 env:
-  PROJECT_OWNER:        # org ou usuário dono do Project
+  PROJECT_OWNER: hreis1        # org ou usuário dono do Project
   PROJECT_NUMBER: 1            # número do Project (URL: /projects/N)
   PROJECT_KIND: organization   # "organization" ou "user"
   STATUS_FIELD: Status         # nome do campo single-select que define colunas
